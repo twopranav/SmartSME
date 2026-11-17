@@ -335,6 +335,9 @@ GROUP_NAMES = {
     "tests/test_health.py": "Business health",
     "tests/test_payments.py": "Payments & deadlines",
     "tests/test_payment_modes.py": "Payment modes",
+    "tests/test_account_deletion.py": "Account deletion",
+    "tests/test_reports_breakdown.py": "Report charts & profit",
+    "tests/test_demo_shops.py": "Demo shops",
 }
 
 OUTCOMES = ("passed", "failed", "error", "skipped", "xfailed", "xpassed")

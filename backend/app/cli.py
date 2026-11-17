@@ -16,6 +16,12 @@ the local mail server, and one checks that a Telegram bot token actually works.
     python -m app.cli check-telegram
     python -m app.cli ocr-test
     python -m app.cli sync-env
+
+And one loads the two comparison shops (a struggling provision store and a
+healthy one, four months of trading each) beside the first demo account:
+
+    python -m app.cli demo-shops
+    python -m app.cli demo-shops --reset
 """
 
 from __future__ import annotations
@@ -102,7 +108,11 @@ def inbox_token(name: str | None) -> int:
         return 1
     for business in rows:
         email_prefix = settings.email_user.split("@")[0] if "@" in settings.email_user else "orders"
-        email_domain = settings.email_user.split("@")[1] if "@" in settings.email_user else settings.inbox_domain
+        email_domain = (
+            settings.email_user.split("@")[1]
+            if "@" in settings.email_user
+            else settings.inbox_domain
+        )
         print(f"{business.name}")
         print(f"  token     {business.inbox_token}")
         print(f"  email     {email_prefix}+{business.inbox_token}@{email_domain}")
@@ -362,6 +372,42 @@ NEWLINE = chr(10)
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".tif", ".tiff"}
 
 
+def demo_shops(which: str, reset: bool, as_dated: bool) -> int:
+    """Load the comparison shops into the configured database."""
+    from .analytics import load_overview
+    from .demo_shops import DemoLoadError, existing_shop, load_shop, remove_shop
+
+    letters = ["A", "B"] if which == "both" else [which]
+    with SessionLocal() as db:
+        for letter in letters:
+            if existing_shop(db, letter) is not None:
+                if not reset:
+                    print(f"Shop {letter} is already loaded. Use --reset to load it again.")
+                    continue
+                remove_shop(db, letter)
+                print(f"Shop {letter}: removed the earlier copy.")
+            print(f"Shop {letter}: loading (under a minute on a local database)...")
+            try:
+                result = load_shop(db, letter, as_dated=as_dated, progress=print)
+            except DemoLoadError as err:
+                print(f"\nStopped, and removed the half-loaded shop:\n{err}", file=sys.stderr)
+                return 1
+            health = load_overview(db, result.business_id, 14)["health"] or {}
+            moved = (
+                "dates as written"
+                if result.shift_days == 0
+                else f"dates moved by {result.shift_days} days so the last entry is today"
+            )
+            print(f"  {result.name}: {moved}")
+            print(
+                f"  business health {health.get('overall')}: cash flow {health.get('cashFlow')}, "
+                f"profitability {health.get('profitability')}, revenue {health.get('revenue')}, "
+                f"inventory {health.get('inventory')}"
+            )
+            print(f"  sign in as {result.email} / {result.password}\n")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     _utf8_console()
     parser = argparse.ArgumentParser(prog="python -m app.cli", description=__doc__)
@@ -405,7 +451,20 @@ def main(argv: list[str] | None = None) -> int:
         help="Only check the images can be prepared for upload; makes no API call.",
     )
 
+    shops = sub.add_parser(
+        "demo-shops", help="Load the two comparison shops (struggling and healthy)."
+    )
+    shops.add_argument("--shop", default="both", choices=["A", "B", "both"])
+    shops.add_argument("--reset", action="store_true", help="Delete them first, then load again.")
+    shops.add_argument(
+        "--as-dated",
+        action="store_true",
+        help="Keep the dataset's own dates instead of moving the last entry to today.",
+    )
+
     args = parser.parse_args(argv)
+    if args.command == "demo-shops":
+        return demo_shops(args.shop, args.reset, args.as_dated)
     if args.command == "create-platform-user":
         return create_platform_user(args.email, args.name, args.role, args.password)
     if args.command == "inbox-token":

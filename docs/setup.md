@@ -107,7 +107,12 @@ cd frontend && npm run dev
 Open <http://localhost:5173> and sign in as `demo@smartsme.app` / `demo1234`. The
 first boot seeds that demo business automatically.
 
-To confirm the whole stack is wired up, run the tests, and 569 should pass:
+For two fuller businesses to compare (a struggling shop and a healthy one, four
+months of trading each), run `.venv\Scripts\python -m app.cli demo-shops` from
+`backend`. It takes about a minute and adds two buttons to the sign-in page. See
+[Demo shops](features.md#demo-shops-two-businesses-to-compare).
+
+To confirm the whole stack is wired up, run the tests, and 607 should pass:
 
 ```bash
 cd backend

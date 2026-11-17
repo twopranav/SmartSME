@@ -1,0 +1,48 @@
+============================================================================================
+BUSINESS A: MINI TEST STORES
+============================================================================================
+
+A0. SETUP (enter once, before anything else)
+--------------------------------------------------------------------------------------------
+Settings: business name "Mini Test Stores", address "Gandhi Bazaar, Bengaluru",
+tax rate 5%, invoice prefix MTS, default payment terms 30 days.
+
+Products (Products page, Add product). Unit, purchase price, selling price, opening stock, low-stock level:
+  Sugar 1kg                    unit kg      buy ₹     40  sell ₹     50  opening 100  low-stock 20
+  Tea Powder 1kg               unit kg      buy ₹    400  sell ₹    500  opening  10  low-stock 3
+
+Parties (Parties page). Name, type, payment terms in days:
+  Asha Tiffin Room                 customer  15 days
+  Balaji Wholesale Mart            supplier  7 days
+
+A1. PURCHASES  (Smart Input, 1 entries, oldest first)
+--------------------------------------------------------------------------------------------
+Purchased 50 kg sugar from Balaji Wholesale Mart on 1 November 2026.   [PO-0001]
+
+A2. SALES  (Smart Input, 3 entries, oldest first)
+--------------------------------------------------------------------------------------------
+Sold 20 kg sugar and 2 kg tea powder to Asha Tiffin Room on 3 November 2026.   [MTS-0001]
+Sold 1 kg tea powder to a walk-in customer, paid ₹525/- in cash, on 4 November 2026.   [MTS-0002]
+Sold 10 kg sugar to Asha Tiffin Room on 5 November 2026.   [MTS-0003]
+
+A3. EXPENSES  (Smart Input, 1 entries, oldest first)
+--------------------------------------------------------------------------------------------
+Paid shop rent ₹5,000/- on 6 November 2026.
+
+A4. PAYMENTS RECEIVED FROM CUSTOMERS
+--------------------------------------------------------------------------------------------
+Received ₹1,000 (part payment) from Asha Tiffin Room against invoice MTS-0001 dated 3 November 2026, in cash, on 7 November 2026.
+
+A5. PAYMENTS MADE TO SUPPLIERS
+--------------------------------------------------------------------------------------------
+Paid ₹2,100 to Balaji Wholesale Mart against purchase PO-0001 dated 1 November 2026, by UPI (transaction ID 123456789012), on 8 November 2026.
+
+A6. CANCELLATIONS, STOCK WRITE-OFFS AND DEADLINES  (do these last)
+--------------------------------------------------------------------------------------------
+Cancel invoice MTS-0003 (Asha Tiffin Room, dated 5 November 2026): the order was returned. (Sales page > open the invoice > Cancel. The stock goes back on the shelf.)
+Write off 5 kg of Sugar 1kg on 9 November 2026: sugar spilled in the store room. (Products page > Adjust, quantity -5.)
+Extend the payment deadline of invoice MTS-0001 (Asha Tiffin Room, dated 3 November 2026) from 18 November 2026 to 30 November 2026: the customer asked for more time. (Sales page > open the invoice > Change payment deadline.)
+
+============================================================================================
+END OF DATASET
+============================================================================================

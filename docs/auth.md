@@ -87,6 +87,30 @@ it. There is no mail transport here, so the link travels however the business
 already reaches its staff. Invitations last seven days, work once, and can be
 revoked. A business can never lose its last owner.
 
+### Deleting an account
+
+Anyone can delete their own account: the account block at the top right opens a
+menu with **Delete account**. What goes with it depends on who is asking, and
+the confirmation says so in words before a password is typed.
+
+| Who | What is deleted |
+|---|---|
+| An employee | Their sign-in. Everything they recorded stays with the business; events they caused stay in the log without an author. |
+| One of several owners | Their sign-in. The business carries on under the other owners. |
+| The only owner | The business and everything in it: sales, purchases, expenses, products, parties, and the sign-ins of every other member. |
+| A shared demo account | Refused. Its password is printed on the sign-in page, so anyone could otherwise delete what the next visitor came to see. |
+| A superuser or admin | Refused. A platform account belongs to no business and is managed from the console. |
+
+The password is asked for again, because a session left open on a shop computer
+should not be enough to delete a business. Deleting is one database statement:
+every tenant-owned table points at its business with `ON DELETE CASCADE`, so
+there is no half-deleted state. It cannot be undone, and the dialog says to
+download a report first.
+
+The last-owner rule above still holds from the Team page: an owner cannot
+remove or demote the last owner there. Deleting your own account as the last
+owner is the one way a business ends, and it ends completely.
+
 ### Sign-in throttling
 
 Two independent limits, in `app/core/throttle.py`:

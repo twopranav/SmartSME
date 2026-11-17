@@ -15,6 +15,7 @@ interface Overview {
     purchases: number;
     expenses: number;
     grossProfit: number;
+    netProfit: number;
     receivable: number;
     payable: number;
   };
@@ -66,7 +67,7 @@ export function Reports() {
       <PageHeader
         title="Reports"
         description="Sales, purchases, expenses, and profit at a glance."
-        info="Gross profit is what sales brought in, less the tax collected and less what the goods sold cost you to buy. Expenses are not taken off it. Download a report gives a PDF or CSV of sales, purchases and expenses for any period."
+        info="Gross profit is what sales brought in, less the tax collected and less what the goods sold cost you to buy. Take expenses off that and you have the net profit or loss shown in the coloured band. Download a report gives a PDF or CSV for any period; the PDF opens with the profit or loss for that period and charts of what was sold and what is in stock."
       />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -96,6 +97,8 @@ export function Reports() {
           tone={o.grossProfit >= 0 ? "primary" : "destructive"}
         />
       </div>
+
+      <ProfitBanner netProfit={o.netProfit} currency={cur} />
 
       <Card>
         <CardHeader>
@@ -191,6 +194,39 @@ export function Reports() {
           </div>
         </SectionCard>
       </div>
+    </div>
+  );
+}
+
+/** Whether the shop is making or losing money, in one line. The word says
+ *  it and the colour repeats it, so it does not depend on telling red from
+ *  green. */
+function ProfitBanner({ netProfit, currency }: { netProfit: number; currency: string }) {
+  const even = Math.abs(netProfit) < 0.005;
+  const profit = netProfit > 0;
+  const tone = even
+    ? "border-border bg-muted/50 text-foreground"
+    : profit
+      ? "border-success/30 bg-success/10 text-success"
+      : "border-destructive/30 bg-destructive/10 text-destructive";
+  return (
+    <div
+      className={`flex flex-wrap items-center gap-x-4 gap-y-1 rounded-xl border px-4 py-3 ${tone}`}
+      role="status"
+    >
+      <Icon name={even ? "wallet" : profit ? "trendingUp" : "alert"} size={20} />
+      <div>
+        <div className="text-xs font-semibold uppercase tracking-wide">
+          {even ? "Break-even" : profit ? "In profit" : "In loss"}
+        </div>
+        <div className="text-xl font-bold tabular-nums">
+          {even ? money(0, currency) : money(Math.abs(netProfit), currency)}
+        </div>
+      </div>
+      <p className="text-sm text-muted-foreground">
+        Net {profit || even ? "profit" : "loss"} across everything recorded: sales net of tax, less
+        what the goods sold cost to buy, less expenses.
+      </p>
     </div>
   );
 }

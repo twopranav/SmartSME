@@ -32,3 +32,9 @@ class AcceptInviteInput(BaseModel):
     token: str
     name: str
     password: str
+
+
+class DeleteAccountInput(BaseModel):
+    """The password again: a cookie alone should not be enough to delete."""
+
+    password: str

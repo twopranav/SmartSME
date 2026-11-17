@@ -7,7 +7,9 @@ import { describe, expect, it } from "vitest";
 
 import {
   acceptPayload,
+  amountPaidFor,
   documentTotals,
+  payableTotal,
   priceFieldFor,
   repriceLines,
   type ReviewedDraft,
@@ -253,5 +255,48 @@ describe("what a review sends back", () => {
       partyId: "c1",
       items: draft.items,
     });
+  });
+});
+
+describe("payableTotal", () => {
+  const rice = { productId: "p1", description: "Rice Bag 25kg", quantity: 2, unitPrice: 1350 };
+  const blank = { productId: null, description: "  ", quantity: 1, unitPrice: 500 };
+  const noQty = { productId: "p2", description: "Sugar", quantity: 0, unitPrice: 52 };
+
+  it("is the total of the lines that will be sent, tax included", () => {
+    expect(payableTotal([rice], 5)).toBe(2835);
+  });
+
+  it("leaves out a row with no description or no quantity, as the submit does", () => {
+    expect(payableTotal([rice, blank, noQty], 5)).toBe(2835);
+  });
+
+  it("takes the discount off before tax", () => {
+    expect(payableTotal([rice], 5, "percentage", 10)).toBe(2551.5);
+    expect(payableTotal([rice], 5, "amount", 700)).toBe(2100);
+  });
+
+  it("is zero for an empty document", () => {
+    expect(payableTotal([], 18)).toBe(0);
+  });
+});
+
+describe("amountPaidFor", () => {
+  it("follows the total while paid in full is on, whatever was typed before", () => {
+    expect(amountPaidFor(true, 100, 766.5)).toBe(766.5);
+    expect(amountPaidFor(true, 0, 1200)).toBe(1200);
+  });
+
+  it("is the typed amount for a part payment", () => {
+    expect(amountPaidFor(false, 300, 766.5)).toBe(300);
+  });
+
+  it("is zero when nothing was typed: a credit sale", () => {
+    expect(amountPaidFor(false, 0, 766.5)).toBe(0);
+  });
+
+  it("never exceeds the total and never goes below zero", () => {
+    expect(amountPaidFor(false, 5000, 766.5)).toBe(766.5);
+    expect(amountPaidFor(false, -20, 766.5)).toBe(0);
   });
 });

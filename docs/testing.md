@@ -10,32 +10,35 @@ What is covered, how to run it, and how to add to it.
 
 ```bash
 cd backend
-.venv/Scripts/python -m pytest -q              # 569 tests
+.venv/Scripts/python -m pytest -q              # 607 tests
 ```
 
 ```
 ================================ test summary =================================
-  AI (mocked)             24 passed
+  AI (mocked)              24 passed
+  Account deletion         8 passed
   Alert log                9 passed
-  Business health         55 passed
+  Business health          55 passed
+  Demo shops               11 passed
   Dispatch                 8 passed
-  Domain units            48 passed
-  Endpoint smoke          36 passed
+  Domain units             48 passed
+  Endpoint smoke           36 passed
   Event authors            6 passed
-  Inbound orders          44 passed
-  Languages               46 passed
-  Order slips (OCR)       23 passed
-  Paging                  25 passed
-  Payment modes           22 passed
-  Payments & deadlines    42 passed
-  Point of view           39 passed
+  Inbound orders           44 passed
+  Languages                46 passed
+  Order slips (OCR)        23 passed
+  Paging                   25 passed
+  Payment modes            22 passed
+  Payments & deadlines     42 passed
+  Point of view            39 passed
+  Report charts & profit   19 passed
   Review regressions       8 passed
-  Review regressions II   22 passed
-  Roles & throttle        27 passed
-  Translation             65 passed
-  Unknown words           20 passed
+  Review regressions II    22 passed
+  Roles & throttle         27 passed
+  Translation              65 passed
+  Unknown words            20 passed
 -------------------------------------------------------------------------------
-  569 passed in 42.45s
+  607 passed in 93.20s
 ```
 
 Hooks in `tests/conftest.py` replace pytest's default report order. Pytest prints
@@ -44,7 +47,36 @@ want has scrolled off; here a per-layer summary comes last, with the failures,
 full traceback and assertion diff, printed underneath it. A skip prints its
 reason, which is almost always "Postgres is unreachable".
 
-Nineteen layers, in one run.
+Twenty-two layers, in one run.
+
+**`tests/test_account_deletion.py`: 8 tests on deleting your own account.** Each
+kind of account is taken through it: the last owner is told the business goes
+too (with its record counts) and then it does, members and all, while another
+business is untouched; an employee takes only their sign-in and what they
+recorded stays; one of two owners leaves the business standing; a wrong
+password deletes nothing; a platform account and the shared demo accounts are
+refused.
+
+**`tests/test_reports_breakdown.py`: 19 tests on what a downloaded report says
+at a glance.** The pure pieces first: shares add up, the five largest products
+get a slice each, a long tail folds into one slice that keeps the sum, a short
+tail is named. Then a business built to known numbers: items sold leave out a
+cancelled sale, profit is sales net of tax less cost less expenses, a loss is
+called a loss, and the stock table shows a product added a moment ago and stock
+added by hand with no purchase behind it. One test makes a PDF from seventy
+products, more than the chart has colours for and more rows than fit a page.
+
+**`tests/test_demo_shops.py`: 11 tests on the two comparison shops.** The
+dataset is read section by section and counted. Then all 448 notes in it are
+run through the offline parser, without a database, and each has to draft as it
+was written; for every counter sale the quantities and prices read from the
+sentence must add up to the amount the sentence says was paid. So a change to
+the parser that makes one demo note read differently fails here, by name. The
+loader itself is exercised on a two-product shop in the same format
+(`tests/fixtures/mini_shops.txt`) where every figure can be worked out by hand:
+stock after a purchase, three sales, a cancellation and a write-off; a part
+payment; an extended deadline; dates that move together; a second load
+refused; and a failing line that leaves no half-loaded shop behind.
 
 **`tests/test_health.py`: 55 tests over the business-health score.** The scoring
 functions are pure, so every threshold in
@@ -235,7 +267,7 @@ npm test            # vitest, once
 npm run test:watch
 ```
 
-81 tests in five files. Small on purpose, and pointed first at one thing:
+93 tests in six files. Small on purpose, and pointed first at one thing:
 `src/lib/api.ts`, where the frontend and the API agree on the shape of a
 request. Vitest runs in plain Node with no browser, so what is tested is the
 logic kept in `src/lib`, not the components that draw it.
@@ -279,6 +311,16 @@ flipped between sale and purchase, and leave a typed price alone.
 parser guessed, send today as no date, keep a discount only on a sale, leave
 out emptied lines, and send an expense as a category, an amount and a
 description.
+
+The same file covers the **Paid in full** button. `payableTotal()` must be the
+total of the lines that will actually be sent, so a row with no description or
+no quantity is not paid for. `amountPaidFor()` must follow the total while the
+switch is on, whatever was typed before, and otherwise give the typed amount,
+never more than the total and never below zero.
+
+`src/lib/account.test.ts` covers the sentence in the delete-account warning:
+"12 sales, 3 purchases and 40 products", singular for exactly one, and nothing
+at all for a business with nothing in it.
 
 ## What the test suite does not measure
 

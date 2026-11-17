@@ -7,6 +7,8 @@ from datetime import datetime
 from fastapi import APIRouter, HTTPException, Request, Response, status
 from sqlalchemy import select
 
+from ..accounts import delete_account as delete_account_of
+from ..accounts import plan_deletion
 from ..core.config import settings
 from ..core.deps import AuthContext, Db, SessionUser
 from ..core.roles import OWNER, ROLE_LABELS, permissions_for
@@ -14,7 +16,8 @@ from ..core.security import create_session_token, hash_password, verify_password
 from ..core.throttle import check_sign_in_allowed, client_ip, record_attempt
 from ..invites import hash_token
 from ..models import Business, Invite, User
-from ..schemas import AcceptInviteInput, SignInInput, SignUpInput
+from ..schemas import AcceptInviteInput, DeleteAccountInput, SignInInput, SignUpInput
+from ..seed import DEMO_EMAIL, DEMO_PASSWORD, DEMO_SHOP_ACCOUNTS
 from ..workflow import default_rules
 
 router = APIRouter(prefix="/api/auth", tags=["auth"])
@@ -173,10 +176,95 @@ def accept_invite(body: AcceptInviteInput, response: Response, db: Db) -> dict:
     return _me(_with_business(db, user))
 
 
+@router.get("/demo-accounts")
+def demo_accounts(db: Db) -> dict:
+    """The shared demo sign-ins that exist on this instance, for the buttons
+    on the sign-in page.
+
+    Their password is public on purpose: these accounts are there to be tried.
+    Only the ones actually loaded are listed, so the page never offers a
+    button that would fail. `python -m app.cli demo-shops` loads the two shops.
+    """
+    known = [
+        ("main", DEMO_EMAIL, DEMO_PASSWORD, "Demo account", "A small shop to try things in"),
+        (
+            "A",
+            DEMO_SHOP_ACCOUNTS["A"]["email"],
+            DEMO_SHOP_ACCOUNTS["A"]["password"],
+            "Struggling shop",
+            "Four months of a provision store losing ground",
+        ),
+        (
+            "B",
+            DEMO_SHOP_ACCOUNTS["B"]["email"],
+            DEMO_SHOP_ACCOUNTS["B"]["password"],
+            "Healthy shop",
+            "The same kind of shop, run well",
+        ),
+    ]
+    names = dict(
+        db.execute(
+            select(User.email, Business.name)
+            .join(Business, User.business_id == Business.id)
+            .where(User.email.in_([email for _, email, *_ in known]))
+        ).all()
+    )
+    return {
+        "accounts": [
+            {
+                "key": key,
+                "label": label,
+                "hint": hint,
+                "business": names[email],
+                "email": email,
+                "password": password,
+            }
+            for key, email, password, label, hint in known
+            if email in names
+        ]
+    }
+
+
 @router.post("/sign-out")
 def sign_out(response: Response) -> dict:
     response.delete_cookie(settings.session_cookie, path="/")
     return {"ok": True}
+
+
+def _deletion(plan) -> dict:
+    return {
+        "allowed": plan.allowed,
+        "reason": plan.reason,
+        "deletesBusiness": plan.deletesBusiness,
+        "businessName": plan.businessName,
+        "otherMembers": plan.otherMembers,
+        "records": plan.records,
+    }
+
+
+@router.get("/account-deletion")
+def preview_account_deletion(ctx: SessionUser, db: Db) -> dict:
+    """What deleting the signed-in account would remove, so the confirmation
+    can say it in so many words before anyone types a password."""
+    return _deletion(plan_deletion(db, ctx.user))
+
+
+@router.post("/delete-account")
+def delete_account(body: DeleteAccountInput, ctx: SessionUser, response: Response, db: Db) -> dict:
+    """Delete the signed-in account, and its business when they are its last
+    owner. The password is asked for again: a session left open on a shared
+    shop computer should not be enough to do this."""
+    plan = plan_deletion(db, ctx.user)
+    if not plan.allowed:
+        raise HTTPException(status_code=403, detail=plan.reason)
+    if not verify_password(body.password, ctx.user.password_hash):
+        raise HTTPException(status_code=403, detail="That password is not right.")
+    try:
+        done = delete_account_of(db, ctx.user)
+    except ValueError as err:
+        raise HTTPException(status_code=403, detail=str(err)) from err
+    response.delete_cookie(settings.session_cookie, path="/")
+    return {"ok": True, **_deletion(done)}
 
 
 @router.get("/me")

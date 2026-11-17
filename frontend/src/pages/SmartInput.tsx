@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Field, Input, Select, Textarea } from "@/components/ui/input";
 import { Icon } from "@/components/Icon";
 import { LineItemsEditor, type EditorProduct, type LineRow } from "@/components/LineItemsEditor";
+import { AmountPaidField } from "@/components/AmountPaidField";
+import { amountPaidFor, payableTotal } from "@/lib/draft";
 import { cn, toDateInputValue } from "@/lib/utils";
 
 // Typed text survives navigating away and back, until it is actually parsed.
@@ -346,10 +348,20 @@ function DraftConfirm({
   const [discountType, setDiscountType] = useState(draft.discountType);
   const [discountValue, setDiscountValue] = useState(draft.discountValue);
   const [date, setDate] = useState(draft.date ?? toDateInputValue());
-  const [amountPaid, setAmountPaid] = useState(0);
+  const [typedPaid, setTypedPaid] = useState(0);
+  const [paidInFull, setPaidInFull] = useState(false);
   const [category, setCategory] = useState(draft.category ?? "General");
   const [amount, setAmount] = useState(draft.amount ?? 0);
   const [description, setDescription] = useState(draft.note);
+
+  // Only a sale carries a discount, so only a sale's total is reduced by one.
+  const total = payableTotal(
+    items,
+    status.taxRate,
+    type === "sale" ? discountType : "none",
+    type === "sale" ? discountValue : 0,
+  );
+  const amountPaid = amountPaidFor(paidInFull, typedPaid, total);
 
   const partyList = status.parties.filter(
     (p) => p.type === (type === "purchase" ? "supplier" : "customer"),
@@ -521,15 +533,15 @@ function DraftConfirm({
               </div>
             )}
 
-            <Field label="Amount paid" hint="Leave 0 to keep it as credit.">
-              <Input
-                type="number"
-                min={0}
-                step="0.01"
-                value={amountPaid || ""}
-                onChange={(e) => setAmountPaid(Number(e.target.value) || 0)}
-              />
-            </Field>
+            <AmountPaidField
+              total={total}
+              currency={status.currency}
+              typed={typedPaid}
+              onTyped={setTypedPaid}
+              paidInFull={paidInFull}
+              onPaidInFull={setPaidInFull}
+              hint="Leave it empty to keep it as credit."
+            />
           </>
         )}
 

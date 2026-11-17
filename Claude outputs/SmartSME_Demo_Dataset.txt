@@ -1,0 +1,901 @@
+============================================================================================
+SMARTSME DEMONSTRATION DATASET: TWO COMPARABLE PROVISION STORES IN BENGALURU
+============================================================================================
+
+Period: 15 July 2026 to 11 November 2026 (120 days).
+  Days 1-90, 15 July 2026 to 12 October 2026: baseline history.
+  Days 91-120, 13 October 2026 to 11 November 2026: demonstration period.
+
+Both shops are wholesale-and-retail provision stores in West Bengaluru that supply darshinis,
+restaurants, PG kitchens, a bakery and a small retailer on credit, and sell to walk-in
+customers at the counter. They carry the same 24 products, start with the same opening stock,
+pay the same rent and serve the same mix of customers. Their outcomes differ because of how
+each is run.
+
+HOW TO ENTER IT
+--------------------------------------------------------------------------------------------
+1. Create each business under its own owner account and do its Setup section first.
+2. Then, in this order: purchases, sales, expenses, customer payments, supplier payments, and
+   finally cancellations and write-offs. Entering every purchase before any sale is safe:
+   stock only ever runs higher than it did on the day, and invoice numbers come out in date order.
+3. Purchases, sales and expenses go into Smart Input one sentence at a time. Each sentence names
+   its own date; check the Date field on the confirm screen shows it.
+4. "paid ₹X/-" in a sale or purchase sentence means type X into Amount paid. Without it, leave
+   Amount paid at 0 and the document stays on credit until its payment line further down.
+5. Payments, cancellations, write-offs and the deadline change are not Smart Input notes:
+   each line says which page and button to use.
+6. The health score is worked out from the day it is viewed. The figures in sections 7 are for
+   11 November 2026. Viewed a few days later they drift down a little for both shops, because the
+   last-30-days window starts to include days with nothing recorded.
+7. Typed notes work with or without an AI key. The whole dataset was loaded into a copy of
+   SmartSME with no AI key (offline parser): every note produced the intended draft, every
+   payment was accepted, and the dashboard matched section 7. With a Gemini key, the free tier
+   allows about 15 notes a minute.
+
+============================================================================================
+BUSINESS A: SRI ANNAPOORNESHWARI PROVISION STORES, RAJAJINAGAR, BENGALURU
+Scenario: struggling business
+============================================================================================
+
+Starts the period slightly larger than Business B, then loses ground. It buys in small lots at
+higher prices, discounts often to hold customers, gives easy credit and collects late, pays its
+own suppliers late, and runs short of fast-moving stock. A festive-season bulk buy of cashew,
+basmati and ghee ties up cash. Ganga Veg Restaurant leaves after repeated shortages (one
+delivery is rejected and cancelled), Royal Comforts PG stops ordering, and from late October the
+rice, oil and wholesale suppliers stop supplying until old bills are cleared. A third staff
+member, a cable TV advert, chiller repairs and a moneylender's interest push costs up.
+
+A0. SETUP (enter once, before anything else)
+--------------------------------------------------------------------------------------------
+Settings: business name "Sri Annapoorneshwari Provision Stores", address "Rajajinagar, Bengaluru",
+tax rate 5%, invoice prefix SAP, default payment terms 30 days.
+
+Products (Products page, Add product). Unit, purchase price, selling price, opening stock, low-stock level:
+  Sona Masoori Rice 25kg Bag   unit bag     buy ₹  1,380  sell ₹  1,521  opening  30  low-stock 10
+  Idli Rice 25kg Bag           unit bag     buy ₹  1,092  sell ₹  1,209  opening  25  low-stock 8
+  Basmati Rice 5kg Bag         unit bag     buy ₹    535  sell ₹    595  opening   8  low-stock 3
+  Toor Dal 1kg                 unit kg      buy ₹    146  sell ₹    162  opening 120  low-stock 30
+  Urad Dal 1kg                 unit kg      buy ₹    128  sell ₹    142  opening 100  low-stock 25
+  Moong Dal 1kg                unit kg      buy ₹    115  sell ₹    129  opening  50  low-stock 15
+  Chana Dal 1kg                unit kg      buy ₹  80.50  sell ₹  90.50  opening  50  low-stock 15
+  Sugar 1kg                    unit kg      buy ₹  42.50  sell ₹     46  opening 300  low-stock 75
+  Sunflower Oil 1L Pouch       unit litre   buy ₹    138  sell ₹    152  opening 200  low-stock 50
+  Groundnut Oil 1L Pouch       unit litre   buy ₹    177  sell ₹    195  opening  60  low-stock 20
+  Pure Ghee 1L                 unit litre   buy ₹    562  sell ₹    614  opening  20  low-stock 6
+  Wheat Atta 10kg Bag          unit bag     buy ₹    396  sell ₹    434  opening  20  low-stock 6
+  Bombay Rava 1kg              unit kg      buy ₹  43.50  sell ₹     49  opening  80  low-stock 20
+  Poha 1kg                     unit kg      buy ₹     51  sell ₹  58.50  opening  50  low-stock 15
+  Jaggery 1kg                  unit kg      buy ₹  57.50  sell ₹  66.50  opening  50  low-stock 15
+  Salt 1kg                     unit kg      buy ₹  20.50  sell ₹  25.50  opening 100  low-stock 30
+  Detergent Powder 1kg         unit kg      buy ₹  94.50  sell ₹    109  opening  40  low-stock 12
+  Tea Powder 1kg               unit kg      buy ₹    422  sell ₹    473  opening  20  low-stock 6
+  Filter Coffee Powder 1kg     unit kg      buy ₹    639  sell ₹    712  opening  25  low-stock 8
+  Red Chilli Powder 500g       unit packet  buy ₹    132  sell ₹    151  opening  50  low-stock 15
+  Turmeric Powder 500g         unit packet  buy ₹  90.50  sell ₹    105  opening  40  low-stock 12
+  Mustard Seeds 1kg            unit kg      buy ₹    101  sell ₹    117  opening  20  low-stock 6
+  Tamarind 1kg                 unit kg      buy ₹    144  sell ₹    168  opening  25  low-stock 8
+  Cashew Kernels 1kg           unit kg      buy ₹    783  sell ₹    868  opening   8  low-stock 3
+
+Parties (Parties page). Name, type, payment terms in days:
+  Sri Krishna Udupi Hotel          customer  15 days
+  Shanthi Tiffin Room              customer  15 days
+  Ganga Veg Restaurant             customer  21 days
+  Royal Comforts PG                customer  30 days
+  Lakshmi Bakery and Sweets        customer  15 days
+  Mahesh Provision Store           customer  15 days
+  Mahalakshmi Agro Mandi           supplier  15 days
+  Navarathna Agencies              supplier  15 days
+  City Wholesale Bazaar            supplier  7 days
+  Malnad Traders                   supplier  15 days
+
+A1. PURCHASES  (Smart Input, 41 entries, oldest first)
+--------------------------------------------------------------------------------------------
+Where a sentence says "paid ₹X", type X in Amount paid on the confirm screen; otherwise leave 0.
+
+Purchased 175 kg salt, 700 kg sugar, 175 kg Bombay rava, 40 kg detergent powder, 125 kg urad dal and 30 kg poha from City Wholesale Bazaar on 22 July 2026.   [PO-0001]
+Received 51 bags Sona Masoori rice and 26 bags idli rice from Mahalakshmi Agro Mandi on 23 July 2026.   [PO-0002]
+Purchased 410 litres sunflower oil, 30 litres pure ghee and 40 litres groundnut oil from Navarathna Agencies on 23 July 2026.   [PO-0003]
+Malnad Traders sold us 32 kg filter coffee powder, 80 packets red chilli powder, 7 kg cashew kernels and 14 kg tea powder on 26 July 2026.   [PO-0004]
+City Wholesale Bazaar sold us 175 kg toor dal and 40 kg jaggery on 31 July 2026.   [PO-0005]
+Purchased 25 kg cashew kernels from Malnad Traders on 2 August 2026.   [PO-0006]
+Purchased 25 bags basmati rice from Mahalakshmi Agro Mandi on 2 August 2026.   [PO-0007]
+Purchased 30 litres pure ghee from Navarathna Agencies on 2 August 2026.   [PO-0008]
+City Wholesale Bazaar se 50 kg chana dal, 50 kg moong dal, 125 kg urad dal aur 15 bags wheat atta kharida on 9 August 2026.   [PO-0009]
+Purchased 34 bags idli rice and 42 bags Sona Masoori rice from Mahalakshmi Agro Mandi on 11 August 2026.   [PO-0010]
+Purchased 50 packets turmeric powder, 22 kg tea powder, 30 kg filter coffee powder and 20 kg tamarind from Malnad Traders on 11 August 2026.   [PO-0011]
+Purchased 60 litres groundnut oil and 370 litres sunflower oil from Navarathna Agencies on 12 August 2026.   [PO-0012]
+Received 175 kg toor dal, 700 kg sugar, 175 kg Bombay rava, 175 kg salt, 40 kg detergent powder and 30 kg jaggery from City Wholesale Bazaar on 18 August 2026.   [PO-0013]
+Purchased 90 packets red chilli powder and 14 kg mustard seeds from Malnad Traders on 20 August 2026.   [PO-0014]
+Purchased 47 bags Sona Masoori rice from Mahalakshmi Agro Mandi on 24 August 2026.   [PO-0015]
+Purchased 380 litres sunflower oil and 30 litres groundnut oil from Navarathna Agencies on 26 August 2026.   [PO-0016]
+Purchased 50 kg moong dal, 14 bags wheat atta, 50 kg chana dal and 30 kg poha from City Wholesale Bazaar on 27 August 2026.   [PO-0017]
+Received 22 kg tea powder, 50 packets turmeric powder and 32 kg filter coffee powder from Malnad Traders on 29 August 2026.   [PO-0018]
+Mahalakshmi Agro Mandi se 31 bags idli rice kharida on 2 September 2026.   [PO-0019]
+City Wholesale Bazaar sold us 150 kg toor dal, 150 kg urad dal, 650 kg sugar, 175 kg Bombay rava, 40 kg jaggery, 30 kg detergent powder and 30 kg poha on 5 September 2026.   [PO-0020]
+Purchased 32 litres pure ghee and 50 litres groundnut oil from Navarathna Agencies on 6 September 2026.   [PO-0021]
+Purchased 90 packets red chilli powder and 12 kg mustard seeds from Malnad Traders on 7 September 2026.   [PO-0022]
+Purchased 47 bags Sona Masoori rice from Mahalakshmi Agro Mandi on 13 September 2026.   [PO-0023]
+Received 50 kg chana dal, 150 kg salt, 30 kg poha and 12 bags wheat atta from City Wholesale Bazaar on 14 September 2026.   [PO-0024]
+Received 360 litres sunflower oil and 40 litres groundnut oil from Navarathna Agencies on 15 September 2026.   [PO-0025]
+Purchased 32 kg filter coffee powder, 40 packets turmeric powder, 25 kg tamarind and 16 kg tea powder from Malnad Traders on 16 September 2026.   [PO-0026]
+Received 31 bags idli rice from Mahalakshmi Agro Mandi on 22 September 2026.   [PO-0027]
+Purchased 150 kg Bombay rava, 125 kg toor dal, 125 kg urad dal, 30 kg detergent powder, 25 kg chana dal and 25 kg moong dal from City Wholesale Bazaar on 23 September 2026.   [PO-0028]
+Purchased 30 litres pure ghee and 30 litres groundnut oil from Navarathna Agencies on 24 September 2026.   [PO-0029]
+Purchased 80 packets red chilli powder, 20 kg filter coffee powder, 15 kg tamarind and 12 kg mustard seeds from Malnad Traders on 27 September 2026.   [PO-0030]
+Mahalakshmi Agro Mandi se 44 bags Sona Masoori rice kharida on 1 October 2026.   [PO-0031]
+City Wholesale Bazaar sold us 600 kg sugar, 50 kg poha, 50 kg jaggery, 50 kg chana dal and 30 kg detergent powder on 2 October 2026.   [PO-0032]
+Received 330 litres sunflower oil from Navarathna Agencies on 4 October 2026.   [PO-0033]
+Malnad Traders sold us 16 kg tea powder and 18 kg filter coffee powder on 6 October 2026.   [PO-0034]
+Bought 27 bags idli rice from Mahalakshmi Agro Mandi, paid ₹15,479.10/- in cash, on 10 October 2026.   [PO-0035]
+Bought 125 kg salt, 100 kg toor dal, 40 kg poha, 125 kg Bombay rava, 100 kg urad dal, 50 kg moong dal and 13 bags wheat atta from City Wholesale Bazaar, paid ₹20,301.96/- in cash, on 11 October 2026.   [PO-0036]
+---- Demonstration period starts: 13 October 2026 ----
+Navarathna Agencies se 40 litre groundnut oil aur 18 litre pure ghee kharida on 18 October 2026.   [PO-0037]
+Purchased 15 kg tamarind, 18 kg filter coffee powder, 20 packets turmeric powder, 10 kg mustard seeds and 4 kg cashew kernels from Malnad Traders on 20 October 2026.   [PO-0038]
+Bought 24 bags Sona Masoori rice and 25 bags idli rice from Mahalakshmi Agro Mandi, paid ₹31,720.50/- in cash, on 24 October 2026.   [PO-0039]
+Bought 100 kg urad dal, 50 kg chana dal, 450 kg sugar, 125 kg Bombay rava and 30 kg poha from City Wholesale Bazaar, paid ₹22,531.69/- in cash, on 25 October 2026.   [PO-0040]
+Received 40 packets red chilli powder, 30 packets turmeric powder, 12 kg mustard seeds, 15 kg tamarind and 6 kg cashew kernels from Malnad Traders on 3 November 2026.   [PO-0041]
+
+A2. SALES  (Smart Input, 115 entries, oldest first)
+--------------------------------------------------------------------------------------------
+Where a sentence says "paid ₹X", type X in Amount paid on the confirm screen; otherwise leave 0
+(credit). The tag in brackets is the invoice number SmartSME will give it; do not paste it.
+
+Sold 1 kg filter coffee powder, 1 bag wheat atta, 1 packet red chilli powder and 2 litres groundnut oil to a walk-in customer, paid ₹1,771.35/- in cash, on 15 July 2026.   [SAP-0001]
+Sri Krishna Udupi Hotel ko 7 bags idli rice, 4 bags Sona Masoori rice, 30 kg urad dal, 9 kg chana dal, 40 litre sunflower oil, 55 kg sugar, 8 kg filter coffee powder, 25 kg Bombay rava, 25 kg salt, 4 packets turmeric powder aur 5 kg jaggery becha on 18 July 2026.   [SAP-0002]
+Sold 1 litre groundnut oil, 2 litres sunflower oil and 3 kg sugar to a walk-in customer, paid ₹668.85/- by UPI, on 18 July 2026.   [SAP-0003]
+Sold 8 bags idli rice, 3 bags Sona Masoori rice, 35 kg urad dal, 30 litres sunflower oil, 35 kg sugar, 6 kg filter coffee powder, 20 kg Bombay rava, 20 kg salt, 3 kg mustard seeds, 5 kg tamarind and 6 packets red chilli powder to Shanthi Tiffin Room at a discount of 5%, on 19 July 2026.   [SAP-0004]
+Sold 11 bags Sona Masoori rice, 6 bags wheat atta, 40 kg toor dal, 10 kg moong dal, 45 litres sunflower oil, 35 kg sugar, 5 kg tea powder, 15 kg salt, 15 kg poha, 15 kg detergent powder and 5 packets turmeric powder to Royal Comforts PG on 20 July 2026.   [SAP-0005]
+Sold 90 kg sugar, 15 litres pure ghee, 6 kg cashew kernels, 20 litres groundnut oil and 15 kg jaggery to Lakshmi Bakery and Sweets on 20 July 2026.   [SAP-0006]
+A customer bought 1 litre groundnut oil, 1 kg tea powder, 2 kg poha and 2 packets red chilli powder from us, paid ₹1,141.35/- by UPI, on 20 July 2026.   [SAP-0007]
+Mahesh Provision Store bought 50 kg sugar, 20 kg toor dal, 35 kg salt, 20 kg detergent powder, 15 kg Bombay rava, 15 kg poha, 20 litres sunflower oil and 8 kg moong dal from us on 21 July 2026.   [SAP-0008]
+Sold 9 bags Sona Masoori rice, 30 kg toor dal, 60 litres sunflower oil, 15 litres groundnut oil, 6 kg tea powder, 15 packets red chilli powder and 7 packets turmeric powder to Ganga Veg Restaurant on 22 July 2026.   [SAP-0009]
+Sold 5 kg sugar, 2 packets red chilli powder, 2 litres sunflower oil and 1 kg urad dal to a walk-in customer, paid ₹1,026.90/- in cash, on 23 July 2026.   [SAP-0010]
+Sold 9 bags idli rice, 4 bags Sona Masoori rice, 30 kg urad dal, 45 litres sunflower oil, 7 kg filter coffee powder, 25 kg Bombay rava, 20 kg salt, 9 packets red chilli powder, 5 packets turmeric powder and 6 kg jaggery to Sri Krishna Udupi Hotel on 25 July 2026.   [SAP-0011]
+Sold 1 litre groundnut oil and 1 kg Bombay rava to a walk-in customer, paid ₹256.20/- by UPI, on 27 July 2026.   [SAP-0012]
+Sold 5 bags idli rice, 20 kg urad dal, 15 kg chana dal, 30 litres sunflower oil, 45 kg sugar, 8 kg filter coffee powder, 15 kg Bombay rava, 3 kg mustard seeds and 6 packets red chilli powder to Shanthi Tiffin Room on 28 July 2026.   [SAP-0013]
+Lakshmi Bakery and Sweets ge 120 kg sakkare, 15 litres pure ghee, 15 litres groundnut oil mattu 20 kg bella maride on 28 July 2026.   [SAP-0014]
+Ganga Veg Restaurant bought 9 bags Sona Masoori rice, 30 kg toor dal, 50 litres sunflower oil, 10 litres groundnut oil, 50 kg sugar, 6 kg tea powder, 15 packets red chilli powder, 6 packets turmeric powder, 8 kg tamarind, 3 bags wheat atta, 8 kg moong dal and 3 kg mustard seeds from us on 29 July 2026.   [SAP-0015]
+Sold 1 kg poha, 2 litres sunflower oil and 1 bag Sona Masoori rice to a walk-in customer, paid ₹1,977.68/- by UPI, on 31 July 2026.   [SAP-0016]
+Sold 11 bags Sona Masoori rice, 5 bags wheat atta, 30 kg toor dal, 10 kg moong dal, 50 litres sunflower oil, 40 kg sugar, 5 kg tea powder, 15 kg salt, 15 kg Bombay rava, 8 packets red chilli powder and 5 packets turmeric powder to Royal Comforts PG on 1 August 2026.   [SAP-0017]
+Sold 60 kg sugar, 30 kg toor dal, 35 kg salt, 25 kg detergent powder, 15 kg Bombay rava, 4 kg tea powder, 20 litres sunflower oil, 10 kg moong dal and 8 kg chana dal to Mahesh Provision Store on 1 August 2026.   [SAP-0018]
+Sri Krishna Udupi Hotel ko 9 bags idli rice, 5 bags Sona Masoori rice, 25 kg urad dal, 15 kg chana dal, 45 litre sunflower oil, 50 kg sugar, 8 kg filter coffee powder, 30 kg Bombay rava, 8 packets red chilli powder aur 4 packets turmeric powder becha on 2 August 2026.   [SAP-0019]
+Shanthi Tiffin Room bought 5 bags idli rice, 3 bags Sona Masoori rice, 25 kg urad dal, 3 kg chana dal, 35 litres sunflower oil, 45 kg sugar, 5 kg filter coffee powder, 25 kg Bombay rava, 5 packets red chilli powder and 4 packets turmeric powder from us at a discount of 5%, on 4 August 2026.   [SAP-0020]
+Lakshmi Bakery and Sweets bought 95 kg sugar, 15 litres pure ghee, 30 kg Bombay rava and 15 litres groundnut oil from us at a discount of 5%, on 4 August 2026.   [SAP-0021]
+A customer bought 2 kg Bombay rava, 2 kg poha and 1 kg urad dal from us, paid ₹374.85/- by UPI, on 4 August 2026.   [SAP-0022]
+Sold 9 bags Sona Masoori rice, 30 kg toor dal, 45 litres sunflower oil, 40 kg sugar, 6 kg tea powder, 15 packets red chilli powder, 5 kg tamarind, 2 bags wheat atta, 15 kg salt and 2 bags basmati rice to Ganga Veg Restaurant on 5 August 2026.   [SAP-0023]
+A customer bought 2 kg urad dal, 1 kg Bombay rava and 2 packets red chilli powder from us, paid ₹666.75/- by UPI, on 7 August 2026.   [SAP-0024]
+Sri Krishna Udupi Hotel bought 7 bags idli rice, 3 bags Sona Masoori rice, 35 kg urad dal, 40 litres sunflower oil, 55 kg sugar, 9 kg filter coffee powder and 25 kg salt from us on 8 August 2026.   [SAP-0025]
+A customer bought 2 litres groundnut oil and 1 kg Bombay rava from us, paid ₹460.95/- by UPI, on 10 August 2026.   [SAP-0026]
+Lakshmi Bakery and Sweets ge 120 kg sakkare, 10 litres pure ghee, 20 kg Bombay rava, 15 litres groundnut oil mattu 20 kg bella maride on 11 August 2026.   [SAP-0027]
+Sold 7 kg sugar, 20 kg toor dal, 35 kg salt, 20 kg detergent powder, 20 packets red chilli powder, 15 packets turmeric powder, 25 litres sunflower oil and 10 kg chana dal to Mahesh Provision Store on 11 August 2026.   [SAP-0028]
+Ganga Veg Restaurant bought 9 bags Sona Masoori rice, 30 kg toor dal, 55 litres sunflower oil, 5 litres pure ghee, 4 kg tea powder, 15 packets red chilli powder, 6 packets turmeric powder, 3 kg mustard seeds and 15 kg salt from us on 12 August 2026.   [SAP-0029]
+Sold 11 bags Sona Masoori rice, 6 bags wheat atta, 35 kg toor dal, 15 kg moong dal, 45 litres sunflower oil, 15 kg poha, 15 kg Bombay rava, 1 packet red chilli powder and 5 packets turmeric powder to Royal Comforts PG on 12 August 2026.   [SAP-0030]
+Sold 7 bags idli rice, 3 bags Sona Masoori rice, 30 kg urad dal, 30 litres sunflower oil, 6 kg filter coffee powder, 15 kg salt and 5 packets turmeric powder to Shanthi Tiffin Room on 13 August 2026.   [SAP-0031]
+Sold 1 litre sunflower oil, 1 bag wheat atta and 1 kg urad dal to a walk-in customer, paid ₹764.40/- by UPI, on 14 August 2026.   [SAP-0032]
+Sold 4 bags Sona Masoori rice, 30 kg urad dal, 15 kg chana dal, 40 litres sunflower oil, 8 kg filter coffee powder, 5 kg salt and 7 kg jaggery to Sri Krishna Udupi Hotel on 16 August 2026.   [SAP-0033]
+Sold 1 litre sunflower oil to a walk-in customer, paid ₹159.60/- by UPI, on 17 August 2026.   [SAP-0034]
+Supplied 6 bags Sona Masoori rice, 30 kg toor dal, 45 litres sunflower oil, 10 litres groundnut oil, 35 kg sugar, 5 kg tea powder, 4 bags wheat atta, 8 kg moong dal and 3 kg mustard seeds to Ganga Veg Restaurant on 18 August 2026.   [SAP-0035]
+Lakshmi Bakery and Sweets bought 95 kg sugar, 10 litres pure ghee, 6 kg cashew kernels, 30 kg Bombay rava and 15 litres groundnut oil from us on 19 August 2026.   [SAP-0036]
+Sold 2 kg jaggery and 2 kg detergent powder to a walk-in customer, paid ₹368.55/- in cash, on 19 August 2026.   [SAP-0037]
+Sold 6 bags idli rice, 20 kg urad dal, 25 litres sunflower oil, 35 kg sugar, 7 kg filter coffee powder, 15 kg Bombay rava and 6 packets red chilli powder to Shanthi Tiffin Room on 20 August 2026.   [SAP-0038]
+Royal Comforts PG bought 11 bags Sona Masoori rice, 35 kg toor dal, 15 kg moong dal, 45 litres sunflower oil, 40 kg sugar, 5 kg tea powder, 15 kg Bombay rava, 15 kg detergent powder and 5 packets turmeric powder from us at a discount of 5%, on 21 August 2026.   [SAP-0039]
+Sold 75 kg sugar, 20 kg toor dal, 40 kg salt, 15 kg Bombay rava, 15 kg poha, 14 packets turmeric powder, 4 kg tea powder, 25 litres sunflower oil and 9 kg chana dal to Mahesh Provision Store at a discount of 5%, on 21 August 2026.   [SAP-0040]
+Sri Krishna Udupi Hotel ko 7 bags idli rice, 4 bags Sona Masoori rice, 25 kg urad dal, 35 litre sunflower oil, 60 kg sugar, 7 kg filter coffee powder, 30 kg Bombay rava, 4 kg mustard seeds, 9 packets red chilli powder aur 5 kg jaggery becha on 23 August 2026.   [SAP-0041]
+Sold 2 kg urad dal and 2 packets red chilli powder to a walk-in customer, paid ₹615.30/- in cash, on 23 August 2026.   [SAP-0042]
+Sold 8 bags Sona Masoori rice, 25 kg toor dal, 45 litres sunflower oil, 9 litres groundnut oil, 30 kg sugar, 5 kg tea powder, 15 packets red chilli powder, 3 bags wheat atta, 8 kg moong dal and 3 kg mustard seeds to Ganga Veg Restaurant at a discount of 8%, on 25 August 2026.   [SAP-0043]
+Lakshmi Bakery and Sweets ge 120 kg sakkare, 4 kg cashew kernels, 30 kg Bombay rava, 15 litres groundnut oil mattu 15 kg bella maride on 27 August 2026.   [SAP-0044]
+Sold 1 kg Bombay rava, 1 bag wheat atta, 2 kg jaggery and 4 kg sugar to a walk-in customer, paid ₹840/- by UPI, on 27 August 2026.   [SAP-0045]
+Shanthi Tiffin Room bought 6 bags idli rice, 30 kg urad dal, 25 litres sunflower oil, 35 kg sugar, 5 kg filter coffee powder, 20 kg Bombay rava, 3 kg mustard seeds, 5 kg tamarind, 6 packets red chilli powder and 4 kg jaggery from us on 28 August 2026.   [SAP-0046]
+Sold 75 kg sugar, 25 kg toor dal, 40 kg salt, 15 kg Bombay rava, 15 kg poha, 30 packets red chilli powder, 20 litres sunflower oil and 15 kg chana dal to Mahesh Provision Store on 29 August 2026.   [SAP-0047]
+Sri Krishna Udupi Hotel bought 7 bags idli rice, 4 bags Sona Masoori rice, 8 kg urad dal, 8 kg chana dal, 35 litres sunflower oil, 45 kg sugar, 8 kg filter coffee powder, 4 kg Bombay rava, 20 kg salt and 6 kg jaggery from us on 30 August 2026.   [SAP-0048]
+Royal Comforts PG bought 10 bags Sona Masoori rice, 5 bags wheat atta, 30 kg toor dal, 45 litres sunflower oil, 35 kg sugar, 4 kg tea powder, 15 kg poha, 9 kg detergent powder and 4 packets turmeric powder from us on 31 August 2026.   [SAP-0049]
+A customer bought 1 kg salt, 3 kg toor dal and 2 packets red chilli powder from us, paid ₹854.18/- by UPI, on 31 August 2026.   [SAP-0050]
+Ganga Veg Restaurant ko 8 bags Sona Masoori rice, 7 kg toor dal, 50 litre sunflower oil, 10 litre groundnut oil, 5 litre pure ghee, 16 kg sugar, 3 kg tea powder, 15 packets red chilli powder, 7 packets turmeric powder, 3 kg mustard seeds aur 15 kg salt becha on 1 September 2026.   [SAP-0051]
+Sold 1 kg filter coffee powder, 1 kg moong dal and 2 kg jaggery to a walk-in customer, paid ₹1,022.70/- by UPI, on 2 September 2026.   [SAP-0052]
+Shanthi Tiffin Room ko 5 bags idli rice, 3 bags Sona Masoori rice, 10 kg chana dal, 30 litre sunflower oil, 6 kg filter coffee powder, 4 kg tamarind, 5 packets red chilli powder aur 4 packets turmeric powder becha on 3 September 2026.   [SAP-0053]
+Sri Krishna Udupi Hotel bought 8 bags idli rice, 4 bags Sona Masoori rice, 35 kg urad dal, 15 kg chana dal, 35 litres sunflower oil, 7 kg filter coffee powder, 20 kg Bombay rava, 20 kg salt, 5 kg tamarind, 6 packets turmeric powder and 6 kg jaggery from us on 5 September 2026.   [SAP-0054]
+Lakshmi Bakery and Sweets bought 85 kg sugar, 5 litres pure ghee, 25 kg Bombay rava, 20 litres groundnut oil and 20 kg jaggery from us on 5 September 2026.   [SAP-0055]
+Sold 2 kg jaggery, 1 kg Bombay rava, 5 kg sugar and 1 bag wheat atta to a walk-in customer, paid ₹888.30/- in cash, on 5 September 2026.   [SAP-0056]
+Sold 45 kg sugar, 39 kg salt, 20 kg detergent powder, 15 kg Bombay rava, 15 kg poha, 15 packets red chilli powder, 15 packets turmeric powder, 20 litres sunflower oil, 10 kg moong dal and 8 kg chana dal to Mahesh Provision Store on 7 September 2026.   [SAP-0057]
+Sold 6 bags Sona Masoori rice, 25 kg toor dal, 45 litres sunflower oil, 15 litres groundnut oil, 3 litres pure ghee, 30 kg sugar, 3 kg tea powder, 7 packets turmeric powder, 4 kg tamarind and 7 kg moong dal to Ganga Veg Restaurant on 8 September 2026.   [SAP-0058]
+Sold 2 packets red chilli powder and 2 litres groundnut oil to a walk-in customer, paid ₹726.60/- in cash, on 9 September 2026.   [SAP-0059]
+Supplied 6 bags idli rice, 20 kg urad dal, 10 kg chana dal, 30 litres sunflower oil, 35 kg sugar, 6 kg filter coffee powder, 3 kg tamarind and 6 packets red chilli powder to Shanthi Tiffin Room on 12 September 2026.   [SAP-0060]
+Sold 7 bags Sona Masoori rice, 5 bags wheat atta, 35 kg toor dal, 10 kg moong dal, 40 litres sunflower oil, 30 kg sugar, 4 kg tea powder, 15 kg poha and 7 packets red chilli powder to Royal Comforts PG at a discount of 5%, on 12 September 2026.   [SAP-0061]
+Sold 2 litres sunflower oil, 3 kg sugar, 1 kg Bombay rava and 2 kg poha to a walk-in customer, paid ₹638.40/- by UPI, on 12 September 2026.   [SAP-0062]
+Sold 6 bags idli rice, 3 bags Sona Masoori rice, 35 kg urad dal, 35 kg sugar, 6 kg filter coffee powder, 20 kg Bombay rava and 4 packets turmeric powder to Sri Krishna Udupi Hotel on 13 September 2026.   [SAP-0063]
+Lakshmi Bakery and Sweets ge 85 kg sakkare, 10 litres pure ghee, 3 kg cashew kernels, 20 kg Bombay rava mattu 20 litres groundnut oil maride on 13 September 2026.   [SAP-0064]
+Ganga Veg Restaurant bought 7 bags Sona Masoori rice, 25 kg toor dal, 5 litres sunflower oil, 8 litres groundnut oil, 4 litres pure ghee, 4 kg tea powder, 10 packets red chilli powder, 6 kg tamarind, 3 kg mustard seeds and 15 kg salt from us at a discount of 5%, on 14 September 2026.   [SAP-0065]
+Sold 40 kg sugar, 20 kg toor dal, 30 kg salt, 15 kg detergent powder, 15 kg Bombay rava, 15 kg poha, 3 packets turmeric powder, 15 litres sunflower oil, 10 kg moong dal and 10 kg chana dal to Mahesh Provision Store on 15 September 2026.   [SAP-0066]
+A customer bought 1 bag Sona Masoori rice, 1 kg salt and 2 packets red chilli powder from us, paid ₹1,940.93/- in cash, on 15 September 2026.   [SAP-0067]
+Shanthi Tiffin Room ko 4 bags idli rice, 20 kg urad dal, 10 kg chana dal, 30 litre sunflower oil, 40 kg sugar, 6 kg filter coffee powder, 20 kg Bombay rava, 15 kg salt, 3 kg mustard seeds, 5 kg tamarind aur 6 packets red chilli powder becha on 18 September 2026.   [SAP-0068]
+Sold 2 kg detergent powder, 1 bag Sona Masoori rice and 2 kg urad dal to a walk-in customer, paid ₹2,124.15/- by UPI, on 18 September 2026.   [SAP-0069]
+Sri Krishna Udupi Hotel bought 4 bags idli rice, 4 bags Sona Masoori rice, 20 kg urad dal, 9 kg chana dal, 30 litres sunflower oil, 55 kg sugar, 7 kg filter coffee powder, 25 kg Bombay rava, 20 kg salt, 3 kg mustard seeds, 6 kg tamarind and 3 packets turmeric powder from us on 21 September 2026.   [SAP-0070]
+Sold 2 litres sunflower oil, 2 litres groundnut oil and 1 kg toor dal to a walk-in customer, paid ₹898.80/- by UPI, on 21 September 2026.   [SAP-0071]
+Sold 6 bags Sona Masoori rice, 25 kg toor dal, 40 litres sunflower oil, 10 litres groundnut oil, 5 litres pure ghee, 40 kg sugar, 10 packets red chilli powder and 6 kg tamarind to Ganga Veg Restaurant on 22 September 2026.   [SAP-0072]
+Sold 9 bags Sona Masoori rice, 5 bags wheat atta, 30 kg toor dal, 9 kg moong dal, 40 litres sunflower oil, 30 kg sugar, 4 kg tea powder, 15 kg poha and 8 kg detergent powder to Royal Comforts PG at a discount of 8%, on 23 September 2026.   [SAP-0073]
+Supplied 92 kg sugar, 10 litres pure ghee, 5 kg cashew kernels, 20 kg Bombay rava and 20 litres groundnut oil to Lakshmi Bakery and Sweets on 23 September 2026.   [SAP-0074]
+Sold 15 kg detergent powder, 13 kg poha, 20 packets red chilli powder, 25 litres sunflower oil, 10 kg moong dal and 15 kg chana dal to Mahesh Provision Store on 24 September 2026.   [SAP-0075]
+A customer bought 2 kg Bombay rava, 1 kg urad dal and 1 kg filter coffee powder from us, paid ₹999.60/- by UPI, on 24 September 2026.   [SAP-0076]
+Sold 7 bags idli rice, 3 bags Sona Masoori rice, 20 kg urad dal, 9 kg chana dal, 25 litres sunflower oil, 6 kg filter coffee powder, 20 kg Bombay rava, 3 kg mustard seeds, 6 packets red chilli powder, 3 packets turmeric powder and 3 kg jaggery to Shanthi Tiffin Room at a discount of 5%, on 26 September 2026.   [SAP-0077]
+Sold 1 litre sunflower oil, 1 kg toor dal and 1 kg filter coffee powder to a walk-in customer, paid ₹1,077.30/- by UPI, on 26 September 2026.   [SAP-0078]
+Sri Krishna Udupi Hotel bought 7 bags idli rice, 4 bags Sona Masoori rice, 25 kg urad dal, 9 kg chana dal, 40 litres sunflower oil, 8 kg filter coffee powder, 20 kg salt, 3 kg mustard seeds, 7 packets red chilli powder and 5 kg jaggery from us on 29 September 2026.   [SAP-0079]
+Sold 8 bags Sona Masoori rice, 25 kg toor dal, 45 litres sunflower oil, 5 kg tea powder, 15 packets red chilli powder, 4 packets turmeric powder, 5 kg tamarind and 3 kg mustard seeds to Ganga Veg Restaurant at a discount of 5%, on 29 September 2026.   [SAP-0080]
+Sold 1 bag wheat atta, 1 packet red chilli powder, 1 litre sunflower oil and 1 kg tea powder to a walk-in customer, paid ₹1,270.50/- by UPI, on 29 September 2026.   [SAP-0081]
+Sold 9 litres pure ghee, 5 kg cashew kernels, 15 litres groundnut oil and 15 kg jaggery to Lakshmi Bakery and Sweets on 1 October 2026.   [SAP-0082]
+Sold 50 kg sugar, 40 kg salt, 15 kg poha and 15 litres sunflower oil to Mahesh Provision Store on 2 October 2026.   [SAP-0083]
+A customer bought 1 bag Sona Masoori rice, 1 kg moong dal, 2 kg jaggery and 1 kg filter coffee powder from us, paid ₹2,619.75/- by UPI, on 2 October 2026.   [SAP-0084]
+Sold 9 bags Sona Masoori rice, 4 bags wheat atta, 30 kg toor dal, 9 kg moong dal, 35 litres sunflower oil, 30 kg sugar, 4 kg tea powder, 15 kg poha and 15 kg Bombay rava to Royal Comforts PG at a discount of 5%, on 3 October 2026.   [SAP-0085]
+Shanthi Tiffin Room bought 6 bags idli rice, 3 bags Sona Masoori rice, 20 kg urad dal, 6 kg chana dal, 25 litres sunflower oil, 35 kg sugar, 4 kg filter coffee powder, 15 kg Bombay rava, 3 kg mustard seeds, 5 kg tamarind, 3 packets turmeric powder and 5 kg jaggery from us on 4 October 2026.   [SAP-0086]
+Sri Krishna Udupi Hotel bought 8 bags idli rice, 3 bags Sona Masoori rice, 35 kg urad dal, 9 kg chana dal, 35 litres sunflower oil, 50 kg sugar, 7 kg filter coffee powder, 20 kg Bombay rava, 9 kg salt, 8 packets red chilli powder and 5 packets turmeric powder from us on 5 October 2026.   [SAP-0087]
+Sold 6 bags Sona Masoori rice, 25 kg toor dal, 40 litres sunflower oil, 9 litres groundnut oil, 4 litres pure ghee, 30 kg sugar, 3 kg tea powder, 10 packets red chilli powder, 2 bags wheat atta, 7 kg moong dal and 1 bag basmati rice to Ganga Veg Restaurant on 5 October 2026.   [SAP-0088]
+Sold 1 kg Bombay rava, 1 kg tea powder and 1 litre sunflower oil to a walk-in customer, paid ₹707.70/- by UPI, on 6 October 2026.   [SAP-0089]
+A customer bought 1 kg moong dal and 1 bag wheat atta from us, paid ₹591.15/- in cash, on 9 October 2026.   [SAP-0090]
+Shanthi Tiffin Room bought 4 bags idli rice, 3 bags Sona Masoori rice, 20 kg urad dal, 25 litres sunflower oil, 40 kg sugar, 4 kg filter coffee powder, 15 kg Bombay rava and 3 kg mustard seeds from us on 10 October 2026.   [SAP-0091]
+Supplied 70 kg sugar, 10 litres pure ghee, 4 kg cashew kernels, 15 kg Bombay rava, 20 litres groundnut oil and 15 kg jaggery to Lakshmi Bakery and Sweets on 10 October 2026.   [SAP-0092]
+Sold 65 kg sugar, 25 kg toor dal, 15 kg detergent powder, 15 kg Bombay rava, 15 kg poha, 15 packets turmeric powder and 25 litres sunflower oil to Mahesh Provision Store on 10 October 2026.   [SAP-0093]
+Royal Comforts PG bought 8 bags Sona Masoori rice, 4 bags wheat atta, 30 kg toor dal, 9 kg moong dal, 40 litres sunflower oil, 25 kg sugar, 15 kg salt, 15 kg poha, 15 kg Bombay rava, 8 kg detergent powder and 7 packets red chilli powder from us on 12 October 2026.   [SAP-0094]
+Sold 1 kg moong dal and 2 kg toor dal to a walk-in customer, paid ₹475.65/- in cash, on 12 October 2026.   [SAP-0095]
+---- Demonstration period starts: 13 October 2026 ----
+Sold 11 bags idli rice, 45 kg urad dal, 15 kg chana dal, 50 litres sunflower oil, 55 kg sugar, 9 kg filter coffee powder, 35 kg Bombay rava, 25 kg salt, 7 kg tamarind and 9 packets red chilli powder to Sri Krishna Udupi Hotel on 13 October 2026.   [SAP-0096]
+Sold 1 kg tea powder, 1 packet red chilli powder, 2 kg detergent powder and 2 litres sunflower oil to a walk-in customer, paid ₹1,203.30/- by UPI, on 14 October 2026.   [SAP-0097]
+Sold 110 kg sugar, 7 litres pure ghee, 5 kg cashew kernels, 13 litres groundnut oil and 20 kg jaggery to Lakshmi Bakery and Sweets on 17 October 2026.   [SAP-0098]
+Sold 8 bags idli rice, 4 bags Sona Masoori rice, 30 kg urad dal, 9 kg chana dal, 40 kg sugar, 8 kg filter coffee powder, 15 kg Bombay rava, 20 kg salt, 4 kg mustard seeds and 6 kg tamarind to Shanthi Tiffin Room at a discount of 5%, on 18 October 2026.   [SAP-0099]
+Sold 1 kg Bombay rava, 3 litres sunflower oil, 1 kg poha and 1 kg filter coffee powder to a walk-in customer, paid ₹1,339.28/- by UPI, on 19 October 2026.   [SAP-0100]
+Sold 7 bags idli rice, 4 bags Sona Masoori rice, 40 kg urad dal, 9 kg chana dal, 45 litres sunflower oil, 35 kg Bombay rava, 25 kg salt, 5 kg mustard seeds, 6 kg tamarind, 10 packets red chilli powder and 4 packets turmeric powder to Sri Krishna Udupi Hotel on 20 October 2026.   [SAP-0101]
+Royal Comforts PG bought 4 bags Sona Masoori rice, 7 bags wheat atta, 45 kg toor dal, 15 kg moong dal, 55 litres sunflower oil, 6 kg tea powder, 20 kg salt, 20 kg poha, 20 kg Bombay rava, 15 kg detergent powder, 9 packets red chilli powder and 6 packets turmeric powder from us at a discount of 5%, on 21 October 2026.   [SAP-0102]
+Sold 30 kg toor dal, 20 kg salt, 20 kg Bombay rava, 9 kg poha, 9 packets red chilli powder, 17 packets turmeric powder, 15 kg moong dal and 15 kg chana dal to Mahesh Provision Store at a discount of 5%, on 21 October 2026.   [SAP-0103]
+Sold 9 bags idli rice, 7 kg urad dal, 8 kg filter coffee powder and 9 kg Bombay rava to Shanthi Tiffin Room on 24 October 2026.   [SAP-0104]
+Sold 1 kg moong dal to a walk-in customer, paid ₹135.45/- by UPI, on 24 October 2026.   [SAP-0105]
+Sold 130 kg sugar, 15 litres pure ghee, 6 kg cashew kernels, 25 kg Bombay rava, 20 litres groundnut oil and 8 kg jaggery to Lakshmi Bakery and Sweets at a discount of 5%, on 27 October 2026.   [SAP-0106]
+Sold 11 bags idli rice, 5 bags Sona Masoori rice, 40 kg urad dal, 15 kg chana dal, 8 kg filter coffee powder, 35 kg Bombay rava, 5 kg mustard seeds and 8 kg tamarind to Sri Krishna Udupi Hotel at a discount of 5%, on 28 October 2026.   [SAP-0107]
+Sold 1 kg Bombay rava, 1 bag wheat atta and 1 bag Sona Masoori rice to a walk-in customer, paid ₹2,104.20/- in cash, on 28 October 2026.   [SAP-0108]
+Shanthi Tiffin Room bought 5 bags idli rice, 4 bags Sona Masoori rice, 35 kg urad dal, 50 kg sugar, 8 kg filter coffee powder, 30 kg Bombay rava, 2 kg mustard seeds and 1 kg tamarind from us at a discount of 5%, on 30 October 2026.   [SAP-0109]
+Mahesh Provision Store bought 55 kg sugar, 1 kg toor dal, 4 kg tea powder and 10 kg chana dal from us at a discount of 5%, on 1 November 2026.   [SAP-0110]
+A customer bought 1 kg urad dal from us, paid ₹149.10/- in cash, on 3 November 2026.   [SAP-0111]
+Sold 24 kg urad dal, 9 kg chana dal, 60 kg sugar, 1 kg filter coffee powder, 25 kg Bombay rava, 4 kg mustard seeds, 7 kg tamarind and 5 packets turmeric powder to Sri Krishna Udupi Hotel at a discount of 5%, on 4 November 2026.   [SAP-0112]
+Sold 140 kg sugar, 3 litres pure ghee, 5 kg cashew kernels, 9 kg Bombay rava and 20 litres groundnut oil to Lakshmi Bakery and Sweets at a discount of 5%, on 5 November 2026.   [SAP-0113]
+Sold 4 bags Sona Masoori rice, 8 kg chana dal, 15 kg sugar, 4 kg mustard seeds, 4 kg tamarind and 4 packets turmeric powder to Shanthi Tiffin Room on 6 November 2026.   [SAP-0114]
+Sold 1 kg tea powder and 1 kg moong dal to a walk-in customer, paid ₹632.10/- in cash, on 7 November 2026.   [SAP-0115]
+
+A3. EXPENSES  (Smart Input, 69 entries, oldest first)
+--------------------------------------------------------------------------------------------
+
+Spent ₹1,814/- for supplies, carry bags and billing rolls, on 18 July 2026.
+Spent ₹1,166/- for fuel for the delivery scooter on 22 July 2026.
+Spent ₹1,135/- for transport, tempo hire to bring stock from City Wholesale Bazaar, on 22 July 2026.
+Spent ₹1,136/- for transport, tempo hire to bring stock from Mahalakshmi Agro Mandi, on 23 July 2026.
+Paid salary ₹16,000/- to Prakash on 31 July 2026.
+Paid salary ₹14,000/- to Gowramma on 31 July 2026.
+Spent ₹1,171/- for transport, tempo hire to bring stock from City Wholesale Bazaar, on 31 July 2026.
+Paid shop rent ₹32,000/- on 1 August 2026.
+Spent ₹1,185/- for transport, tempo hire to bring stock from Mahalakshmi Agro Mandi, on 2 August 2026.
+Paid Airtel internet bill ₹799/- on 5 August 2026.
+Paid BESCOM electricity bill ₹6,321/- on 6 August 2026.
+Spent ₹1,140/- for fuel for the delivery scooter on 8 August 2026.
+Spent ₹1,125/- for transport, tempo hire to bring stock from City Wholesale Bazaar, on 9 August 2026.
+Paid BWSSB water bill ₹485/- for utilities on 10 August 2026.
+Spent ₹1,191/- for transport, tempo hire to bring stock from Mahalakshmi Agro Mandi, on 11 August 2026.
+Spent ₹1,575/- for supplies, carry bags and billing rolls, on 18 August 2026.
+Spent ₹911/- for transport, tempo hire to bring stock from City Wholesale Bazaar, on 18 August 2026.
+Spent ₹1,290/- for fuel for the delivery scooter on 22 August 2026.
+Spent ₹1,388/- for transport, tempo hire to bring stock from Mahalakshmi Agro Mandi, on 24 August 2026.
+Spent ₹1,048/- for transport, tempo hire to bring stock from City Wholesale Bazaar, on 27 August 2026.
+Paid salary ₹16,000/- to Prakash on 31 August 2026.
+Paid salary ₹14,000/- to Gowramma on 31 August 2026.
+Paid salary ₹12,000/- to Naveen on 31 August 2026.
+Paid shop rent ₹32,000/- on 1 September 2026.
+Spent ₹1,080/- for transport, tempo hire to bring stock from Mahalakshmi Agro Mandi, on 2 September 2026.
+Paid ₹4,500/- for interest on the hand loan from a moneylender, on 3 September 2026.
+Paid Airtel internet bill ₹799/- on 5 September 2026.
+Spent ₹1,121/- for transport, tempo hire to bring stock from City Wholesale Bazaar, on 5 September 2026.
+Paid BESCOM electricity bill ₹6,340/- on 6 September 2026.
+Spent ₹1,167/- for fuel for the delivery scooter on 8 September 2026.
+Paid BWSSB water bill ₹606/- for utilities on 10 September 2026.
+Spent ₹6,500/- for maintenance, replacing the chiller compressor, on 10 September 2026.
+Spent ₹1,288/- for transport, tempo hire to bring stock from Mahalakshmi Agro Mandi, on 13 September 2026.
+Spent ₹926/- for transport, tempo hire to bring stock from City Wholesale Bazaar, on 14 September 2026.
+Spent ₹12,000/- for marketing, a local cable TV advertisement, on 14 September 2026.
+Spent ₹1,872/- for supplies, carry bags and billing rolls, on 18 September 2026.
+Paid ₹2,500/- for taxes, BBMP trade licence renewal, on 21 September 2026.
+Spent ₹1,085/- for fuel for the delivery scooter on 22 September 2026.
+Spent ₹938/- for transport, tempo hire to bring stock from Mahalakshmi Agro Mandi, on 22 September 2026.
+Spent ₹904/- for transport, tempo hire to bring stock from City Wholesale Bazaar, on 23 September 2026.
+Paid salary ₹16,000/- to Prakash on 30 September 2026.
+Paid salary ₹14,000/- to Gowramma on 30 September 2026.
+Paid salary ₹12,000/- to Naveen on 30 September 2026.
+Paid shop rent ₹32,000/- on 1 October 2026.
+Spent ₹1,053/- for transport, tempo hire to bring stock from Mahalakshmi Agro Mandi, on 1 October 2026.
+Spent ₹1,179/- for transport, tempo hire to bring stock from City Wholesale Bazaar, on 2 October 2026.
+Paid ₹4,500/- for interest on the hand loan from a moneylender, on 3 October 2026.
+Paid Airtel internet bill ₹799/- on 5 October 2026.
+Paid BESCOM electricity bill ₹6,440/- on 6 October 2026.
+Spent ₹3,200/- for general expenses, Dasara pooja and decoration, on 7 October 2026.
+Spent ₹1,339/- for fuel for the delivery scooter on 8 October 2026.
+Paid BWSSB water bill ₹606/- for utilities on 10 October 2026.
+Spent ₹1,254/- for transport, tempo hire to bring stock from Mahalakshmi Agro Mandi, on 10 October 2026.
+Spent ₹8,500/- for marketing, festival offer banners and flex boards, on 10 October 2026.
+Spent ₹986/- for transport, tempo hire to bring stock from City Wholesale Bazaar, on 11 October 2026.
+---- Demonstration period starts: 13 October 2026 ----
+Spent ₹1,548/- for supplies, carry bags and billing rolls, on 18 October 2026.
+Spent ₹3,800/- for maintenance, chiller gas refill and repair, on 19 October 2026.
+Spent ₹1,249/- for fuel for the delivery scooter on 22 October 2026.
+Spent ₹1,253/- for transport, tempo hire to bring stock from Mahalakshmi Agro Mandi, on 24 October 2026.
+Spent ₹1,086/- for transport, tempo hire to bring stock from City Wholesale Bazaar, on 25 October 2026.
+Paid salary ₹16,000/- to Prakash on 31 October 2026.
+Paid salary ₹14,000/- to Gowramma on 31 October 2026.
+Paid salary ₹12,000/- to Naveen on 31 October 2026.
+Paid shop rent ₹32,000/- on 1 November 2026.
+Paid ₹4,500/- for interest on the hand loan from a moneylender, on 3 November 2026.
+Paid Airtel internet bill ₹799/- on 5 November 2026.
+Paid BESCOM electricity bill ₹6,230/- on 6 November 2026.
+Spent ₹1,050/- for fuel for the delivery scooter on 8 November 2026.
+Paid BWSSB water bill ₹517/- for utilities on 10 November 2026.
+
+A4. PAYMENTS RECEIVED FROM CUSTOMERS  (Sales page > open the invoice > Record payment,
+    67 entries). Use the amount, date, mode and reference given.
+--------------------------------------------------------------------------------------------
+
+Received ₹13,260.37 (part payment) from Shanthi Tiffin Room against invoice SAP-0004 dated 19 July 2026, in cash, on 9 August 2026.
+Received ₹19,934.25 from Lakshmi Bakery and Sweets against invoice SAP-0014 dated 28 July 2026, by UPI (transaction ID 937413517027), on 10 August 2026.
+Received ₹43,407 from Royal Comforts PG against invoice SAP-0005 dated 20 July 2026, by bank transfer (UTR SBINN5224023557), on 13 August 2026.
+Received ₹17,930.06 from Lakshmi Bakery and Sweets against invoice SAP-0021 dated 4 August 2026, by UPI (transaction ID 698720728079), on 15 August 2026.
+Received ₹7,505.93 (part payment) from Mahesh Provision Store against invoice SAP-0008 dated 21 July 2026, in cash, on 17 August 2026.
+Received ₹10,315.41 (part payment) from Shanthi Tiffin Room against invoice SAP-0013 dated 28 July 2026, in cash, on 20 August 2026.
+Received ₹35,334.08 from Sri Krishna Udupi Hotel against invoice SAP-0025 dated 8 August 2026, by UPI (transaction ID 125603128482), on 22 August 2026.
+Received ₹17,739.75 from Lakshmi Bakery and Sweets against invoice SAP-0027 dated 11 August 2026, by UPI (transaction ID 772158843891), on 23 August 2026.
+Received ₹38,920.35 from Sri Krishna Udupi Hotel against invoice SAP-0011 dated 25 July 2026, by UPI (transaction ID 202852125954), on 25 August 2026.
+Received ₹41,691.83 from Royal Comforts PG against invoice SAP-0017 dated 1 August 2026, by bank transfer (UTR UTIBN5745225982), on 26 August 2026.
+Received ₹42,169.05 from Ganga Veg Restaurant against invoice SAP-0015 dated 29 July 2026, by cheque no. 268120, on 27 August 2026.
+Received ₹38,253.60 from Ganga Veg Restaurant against invoice SAP-0009 dated 22 July 2026, by cheque no. 899304, on 29 August 2026.
+Received ₹25,274.03 from Sri Krishna Udupi Hotel against invoice SAP-0033 dated 16 August 2026, by UPI (transaction ID 739451425170), on 30 August 2026.
+Received ₹38,369.63 from Sri Krishna Udupi Hotel against invoice SAP-0002 dated 18 July 2026, by UPI (transaction ID 505675767501), on 31 August 2026.
+Received ₹11,084.02 (part payment) from Shanthi Tiffin Room against invoice SAP-0020 dated 4 August 2026, in cash, on 31 August 2026.
+Received ₹37,393.13 from Ganga Veg Restaurant against invoice SAP-0023 dated 5 August 2026, by cheque no. 147711, on 3 September 2026.
+Received ₹36,530.03 from Sri Krishna Udupi Hotel against invoice SAP-0041 dated 23 August 2026, by UPI (transaction ID 544888303309), on 3 September 2026.
+Received ₹24,628.28 from Lakshmi Bakery and Sweets against invoice SAP-0006 dated 20 July 2026, by UPI (transaction ID 233355512654), on 4 September 2026.
+Received ₹11,918.66 (part payment) from Mahesh Provision Store against invoice SAP-0018 dated 1 August 2026, in cash, on 4 September 2026.
+Received ₹37,274.48 from Ganga Veg Restaurant against invoice SAP-0029 dated 12 August 2026, by cheque no. 274411, on 5 September 2026.
+Received ₹43,393.88 from Sri Krishna Udupi Hotel against invoice SAP-0019 dated 2 August 2026, by UPI (transaction ID 140652062260), on 9 September 2026.
+Received ₹19,890.55 (balance) from Shanthi Tiffin Room against invoice SAP-0004 dated 19 July 2026, in cash, on 10 September 2026.
+Received ₹15,473.12 (balance) from Shanthi Tiffin Room against invoice SAP-0013 dated 28 July 2026, in cash, on 11 September 2026.
+Received ₹37,871.93 from Royal Comforts PG against invoice SAP-0030 dated 12 August 2026, by bank transfer (UTR CNRBN7326197987), on 11 September 2026.
+Received ₹32,127.90 from Sri Krishna Udupi Hotel against invoice SAP-0048 dated 30 August 2026, by UPI (transaction ID 393779650901), on 11 September 2026.
+Received ₹7,505.92 (balance) from Mahesh Provision Store against invoice SAP-0008 dated 21 July 2026, in cash, on 12 September 2026.
+Received ₹8,365.62 (part payment) from Mahesh Provision Store against invoice SAP-0028 dated 11 August 2026, in cash, on 12 September 2026.
+Received ₹38,180.31 from Royal Comforts PG against invoice SAP-0039 dated 21 August 2026, by bank transfer (UTR UTIBN5993400551), on 15 September 2026.
+Received ₹16,626.03 (balance) from Shanthi Tiffin Room against invoice SAP-0020 dated 4 August 2026, in cash, on 18 September 2026.
+Received ₹8,627.88 (part payment) from Mahesh Provision Store against invoice SAP-0040 dated 21 August 2026, in cash, on 19 September 2026.
+Received ₹31,363.50 from Ganga Veg Restaurant against invoice SAP-0035 dated 18 August 2026, by cheque no. 550488, on 24 September 2026.
+Received ₹36,603.53 from Royal Comforts PG against invoice SAP-0049 dated 31 August 2026, by bank transfer (UTR ICICN7737370132), on 24 September 2026.
+Received ₹25,272.45 from Sri Krishna Udupi Hotel against invoice SAP-0063 dated 13 September 2026, by UPI (transaction ID 475822286855), on 24 September 2026.
+Received ₹10,007.34 (part payment) from Shanthi Tiffin Room against invoice SAP-0046 dated 28 August 2026, in cash, on 25 September 2026.
+Received ₹7,945.77 (balance) from Mahesh Provision Store against invoice SAP-0018 dated 1 August 2026, in cash, on 26 September 2026.
+Received ₹28,376.78 from Shanthi Tiffin Room against invoice SAP-0031 dated 13 August 2026, in cash, on 27 September 2026.
+Received ₹21,118.65 from Lakshmi Bakery and Sweets against invoice SAP-0036 dated 19 August 2026, by UPI (transaction ID 466173387558), on 27 September 2026.
+Received ₹32,368.73 from Ganga Veg Restaurant against invoice SAP-0043 dated 25 August 2026, by cheque no. 397840, on 28 September 2026.
+Received ₹37,533.83 from Sri Krishna Udupi Hotel against invoice SAP-0054 dated 5 September 2026, by UPI (transaction ID 689613634809), on 28 September 2026.
+Received ₹12,007.80 (part payment) from Mahesh Provision Store against invoice SAP-0047 dated 29 August 2026, in cash, on 1 October 2026.
+Received ₹14,106.75 from Lakshmi Bakery and Sweets against invoice SAP-0055 dated 5 September 2026, by UPI (transaction ID 977376953472), on 2 October 2026.
+Received ₹33,401.03 from Ganga Veg Restaurant against invoice SAP-0051 dated 1 September 2026, by cheque no. 621668, on 5 October 2026.
+Received ₹31,386.60 from Ganga Veg Restaurant against invoice SAP-0058 dated 8 September 2026, by cheque no. 763942, on 8 October 2026.
+Received ₹23,301.60 from Shanthi Tiffin Room against invoice SAP-0053 dated 3 September 2026, in cash, on 9 October 2026.
+Received ₹15,103.73 from Lakshmi Bakery and Sweets against invoice SAP-0044 dated 27 August 2026, by UPI (transaction ID 102951951206), on 11 October 2026.
+Received ₹9,923.13 (part payment) from Mahesh Provision Store against invoice SAP-0057 dated 7 September 2026, in cash, on 11 October 2026.
+Received ₹9,539.25 (part payment) from Shanthi Tiffin Room against invoice SAP-0068 dated 18 September 2026, in cash, on 12 October 2026.
+---- Demonstration period starts: 13 October 2026 ----
+Received ₹15,011.01 (balance) from Shanthi Tiffin Room against invoice SAP-0046 dated 28 August 2026, in cash, on 15 October 2026.
+Received ₹30,985.84 from Royal Comforts PG against invoice SAP-0061 dated 12 September 2026, by bank transfer (UTR SBINN3071058681), on 19 October 2026.
+Received ₹31,560.38 from Sri Krishna Udupi Hotel against invoice SAP-0070 dated 21 September 2026, by UPI (transaction ID 993858466278), on 19 October 2026.
+Received ₹7,288.32 (part payment) from Mahesh Provision Store against invoice SAP-0066 dated 15 September 2026, in cash, on 20 October 2026.
+Received ₹10,974.10 (part payment) from Shanthi Tiffin Room against invoice SAP-0077 dated 26 September 2026, in cash, on 20 October 2026.
+Received ₹24,554.95 from Ganga Veg Restaurant against invoice SAP-0065 dated 14 September 2026, by cheque no. 942517, on 22 October 2026.
+Received ₹34,584.90 from Sri Krishna Udupi Hotel against invoice SAP-0079 dated 29 September 2026, by UPI (transaction ID 862830724001), on 27 October 2026.
+Received ₹8,627.87 (balance) from Mahesh Provision Store against invoice SAP-0040 dated 21 August 2026, in cash, on 28 October 2026.
+Received ₹6,228.08 (part payment) from Mahesh Provision Store against invoice SAP-0075 dated 24 September 2026, in cash, on 29 October 2026.
+Received ₹3,400.69 (part payment) from Mahesh Provision Store against invoice SAP-0083 dated 2 October 2026, in cash, on 29 October 2026.
+Received ₹18,441.15 from Lakshmi Bakery and Sweets against invoice SAP-0098 dated 17 October 2026, by UPI (transaction ID 612458185441), on 29 October 2026.
+Received ₹23,993.55 from Shanthi Tiffin Room against invoice SAP-0060 dated 12 September 2026, in cash, on 30 October 2026.
+Received ₹10,933.23 (part payment) from Shanthi Tiffin Room against invoice SAP-0086 dated 4 October 2026, in cash, on 30 October 2026.
+Received ₹8,005.20 (balance) from Mahesh Provision Store against invoice SAP-0047 dated 29 August 2026, in cash, on 3 November 2026.
+Received ₹31,860.13 from Royal Comforts PG against invoice SAP-0073 dated 23 September 2026, by bank transfer (UTR SBINN6768778413), on 5 November 2026.
+Received ₹19,387.73 from Lakshmi Bakery and Sweets against invoice SAP-0092 dated 10 October 2026, by UPI (transaction ID 646152456956), on 5 November 2026.
+Received ₹20,571.60 from Lakshmi Bakery and Sweets against invoice SAP-0074 dated 23 September 2026, by UPI (transaction ID 808410846652), on 6 November 2026.
+Received ₹8,222.82 (part payment) from Mahesh Provision Store against invoice SAP-0093 dated 10 October 2026, in cash, on 7 November 2026.
+Received ₹12,403.91 (part payment) from Shanthi Tiffin Room against invoice SAP-0099 dated 18 October 2026, in cash, on 9 November 2026.
+Received ₹14,308.88 (balance) from Shanthi Tiffin Room against invoice SAP-0068 dated 18 September 2026, in cash, on 11 November 2026.
+
+A5. PAYMENTS MADE TO SUPPLIERS  (Purchases page > open the purchase > Record payment,
+    30 entries)
+--------------------------------------------------------------------------------------------
+
+Paid ₹1,03,710.60 to Mahalakshmi Agro Mandi against purchase PO-0002 dated 23 July 2026, by UPI (transaction ID 676795239408), on 5 August 2026.
+Paid ₹84,546 to Navarathna Agencies against purchase PO-0003 dated 23 July 2026, by bank transfer (UTR KKBKN4951879367), on 6 August 2026.
+Paid ₹14,043.75 to Mahalakshmi Agro Mandi against purchase PO-0007 dated 2 August 2026, by UPI (transaction ID 942594734961), on 16 August 2026.
+Paid ₹65,373 to City Wholesale Bazaar against purchase PO-0001 dated 22 July 2026, by UPI (transaction ID 535198307671), on 17 August 2026.
+Paid ₹99,842.40 to Mahalakshmi Agro Mandi against purchase PO-0010 dated 11 August 2026, by cheque no. 597914, on 26 August 2026.
+Paid ₹64,764 to Navarathna Agencies against purchase PO-0012 dated 12 August 2026, by UPI (transaction ID 607963299274), on 27 August 2026.
+Paid ₹44,516.85 to Malnad Traders against purchase PO-0004 dated 26 July 2026, by cheque no. 554017, on 29 August 2026.
+Paid ₹29,242.50 to City Wholesale Bazaar against purchase PO-0005 dated 31 July 2026, by cheque no. 947922, on 30 August 2026.
+Paid ₹20,553.75 to Malnad Traders against purchase PO-0006 dated 2 August 2026, by bank transfer (UTR UTIBN7619397506), on 31 August 2026.
+Paid ₹17,703 to Navarathna Agencies against purchase PO-0008 dated 2 August 2026, by UPI (transaction ID 893654861978), on 31 August 2026.
+Paid ₹13,958.70 to Malnad Traders against purchase PO-0014 dated 20 August 2026, by cheque no. 522599, on 3 September 2026.
+Paid ₹33,300.75 to City Wholesale Bazaar against purchase PO-0009 dated 9 August 2026, by bank transfer (UTR SBINN4032131126), on 11 September 2026.
+Paid ₹17,691.45 to City Wholesale Bazaar against purchase PO-0017 dated 27 August 2026, by cheque no. 879081, on 11 September 2026.
+Paid ₹60,637.50 to Navarathna Agencies against purchase PO-0016 dated 26 August 2026, by bank transfer (UTR SBINN7744458943), on 23 September 2026.
+Paid ₹68,103 to Mahalakshmi Agro Mandi against purchase PO-0015 dated 24 August 2026, by bank transfer (UTR KKBKN1199333011), on 3 October 2026.
+Paid ₹28,175.70 to Navarathna Agencies against purchase PO-0021 dated 6 September 2026, by cheque no. 975863, on 4 October 2026.
+Paid ₹87,152.63 to City Wholesale Bazaar against purchase PO-0020 dated 5 September 2026, by bank transfer (UTR CNRBN3740425102), on 6 October 2026.
+Paid ₹68,103 to Mahalakshmi Agro Mandi against purchase PO-0023 dated 13 September 2026, by cheque no. 842480, on 6 October 2026.
+Paid ₹35,969.85 to Malnad Traders against purchase PO-0018 dated 29 August 2026, by cheque no. 210741, on 8 October 2026.
+Paid ₹14,051.10 to City Wholesale Bazaar against purchase PO-0024 dated 14 September 2026, by cheque no. 794888, on 8 October 2026.
+Paid ₹13,746.60 to Malnad Traders against purchase PO-0022 dated 7 September 2026, by bank transfer (UTR ICICN4809844351), on 11 October 2026.
+---- Demonstration period starts: 13 October 2026 ----
+Paid ₹50,922.38 to City Wholesale Bazaar against purchase PO-0028 dated 23 September 2026, by bank transfer (UTR ICICN7248163439), on 13 October 2026.
+Paid ₹59,598 to Navarathna Agencies against purchase PO-0025 dated 15 September 2026, by cheque no. 430870, on 19 October 2026.
+Paid ₹36,141 to Malnad Traders against purchase PO-0026 dated 16 September 2026, by UPI (transaction ID 434460051002), on 20 October 2026.
+Paid ₹23,278.50 to Navarathna Agencies against purchase PO-0029 dated 24 September 2026, by UPI (transaction ID 948688644301), on 22 October 2026.
+Paid ₹19,166.70 to Malnad Traders against purchase PO-0034 dated 6 October 2026, by UPI (transaction ID 166286945423), on 26 October 2026.
+Paid ₹35,544.60 to Mahalakshmi Agro Mandi against purchase PO-0027 dated 22 September 2026, by bank transfer (UTR ICICN3882642000), on 27 October 2026.
+Paid ₹28,047.60 to Malnad Traders against purchase PO-0030 dated 27 September 2026, by UPI (transaction ID 884103298458), on 28 October 2026.
+Paid ₹39,674.25 to City Wholesale Bazaar against purchase PO-0032 dated 2 October 2026, by cheque no. 498222, on 3 November 2026.
+Paid ₹63,756 to Mahalakshmi Agro Mandi against purchase PO-0031 dated 1 October 2026, by cheque no. 461222, on 4 November 2026.
+
+A6. CANCELLATIONS, STOCK WRITE-OFFS AND DEADLINES  (do these last)
+--------------------------------------------------------------------------------------------
+
+Cancel invoice SAP-0072 (Ganga Veg Restaurant, dated 22 September 2026): the restaurant rejected the delivery because the wrong rice variety was sent. (Sales page > open the invoice > Cancel. The stock goes back on the shelf.)
+Write off 4 bags of Basmati Rice 5kg Bag on 24 September 2026: basmati rice bags damaged by weevils. (Products page > Adjust, quantity -4.)
+Write off 8 packets of Red Chilli Powder 500g on 26 October 2026: red chilli powder packets past expiry. (Products page > Adjust, quantity -8.)
+Write off 5 packets of Turmeric Powder 500g on 1 November 2026: turmeric powder packets caked after a roof leak. (Products page > Adjust, quantity -5.)
+Extend the payment deadline of invoice SAP-0091 (Shanthi Tiffin Room, dated 10 October 2026) from 25 October 2026 to 9 November 2026: the customer asked for more time. (Sales page > open the invoice > Change payment deadline.) It is still not paid by the end.
+
+A7. WHAT THE DASHBOARD SHOULD SHOW ON 11 NOVEMBER 2026
+--------------------------------------------------------------------------------------------
+(Scores can move by two or three points with the time of day the dashboard is opened.)
+Sales by 30-day block (incl. 5% GST):
+  15 July 2026 - 13 August 2026                ₹6,89,290
+  14 August 2026 - 12 September 2026           ₹5,72,319
+  13 September 2026 - 12 October 2026          ₹5,47,610
+  13 October 2026 - 11 November 2026 (demo)    ₹3,36,032
+  Last 30 days against the baseline monthly average: -45%
+Net margin, last 90 days: -15.2%  (sales net of GST ₹13,86,629, cost of goods ₹12,73,303, expenses ₹3,23,726)
+Cash flow checks, last 90 days: collected on time 25%, suppliers paid on time 14%, money in ₹14,46,247 vs out ₹15,66,818
+Receivable ₹6,14,056 (overdue ₹4,71,262); payable ₹3,52,322 (overdue ₹3,35,454)
+Out of stock at the end: Idli Rice 25kg Bag, Urad Dal 1kg, Bombay Rava 1kg, Jaggery 1kg, Salt 1kg, Filter Coffee Powder 1kg
+At or below low-stock level: Toor Dal 1kg (25), Chana Dal 1kg (8), Sugar 1kg (40), Sunflower Oil 1L Pouch (40), Groundnut Oil 1L Pouch (10), Pure Ghee 1L (5), Wheat Atta 10kg Bag (6), Detergent Powder 1kg (4), Tea Powder 1kg (6), Mustard Seeds 1kg (4), Cashew Kernels 1kg (1)
+Still on the shelf from the festive bulk buy: Basmati Rice 5kg Bag (26 bags, ₹13,910 at cost)
+  (The health score's dead-stock check skips products added in the last 90 days, so this
+  shows in the stock list and inventory value, not in the inventory score.)
+
+Business health: 24 (At risk)
+  Cash flow       23  At risk
+  Profitability    0  At risk
+  Revenue         30  At risk
+  Inventory       64  Fair
+
+============================================================================================
+BUSINESS B: SRI LAKSHMI PROVISION STORES, BASAVESHWARANAGAR, BENGALURU
+Scenario: healthy business
+============================================================================================
+
+Same kind of shop, same catalogue and the same kind of customers. It buys in bulk on 15 to 30
+day terms and pays every bill before its deadline, keeps fast movers above their low-stock
+levels, collects credit within each customer's terms, and keeps costs flat. Two new customers
+(Brindavan Caterers, Sri Chowdeshwari Mess) join in the demonstration period and regular
+customers order more often, so the last 30 days are well above the baseline.
+
+B0. SETUP (enter once, before anything else)
+--------------------------------------------------------------------------------------------
+Settings: business name "Sri Lakshmi Provision Stores", address "Basaveshwaranagar, Bengaluru",
+tax rate 5%, invoice prefix SLP, default payment terms 30 days.
+
+Products (Products page, Add product). Unit, purchase price, selling price, opening stock, low-stock level:
+  Sona Masoori Rice 25kg Bag   unit bag     buy ₹  1,320  sell ₹  1,560  opening  30  low-stock 10
+  Idli Rice 25kg Bag           unit bag     buy ₹  1,044  sell ₹  1,240  opening  25  low-stock 8
+  Basmati Rice 5kg Bag         unit bag     buy ₹    512  sell ₹    610  opening   8  low-stock 3
+  Toor Dal 1kg                 unit kg      buy ₹    140  sell ₹    166  opening 120  low-stock 30
+  Urad Dal 1kg                 unit kg      buy ₹    122  sell ₹    146  opening 100  low-stock 25
+  Moong Dal 1kg                unit kg      buy ₹    110  sell ₹    132  opening  50  low-stock 15
+  Chana Dal 1kg                unit kg      buy ₹     77  sell ₹     93  opening  50  low-stock 15
+  Sugar 1kg                    unit kg      buy ₹  40.50  sell ₹     47  opening 300  low-stock 75
+  Sunflower Oil 1L Pouch       unit litre   buy ₹    132  sell ₹    156  opening 200  low-stock 50
+  Groundnut Oil 1L Pouch       unit litre   buy ₹    169  sell ₹    200  opening  60  low-stock 20
+  Pure Ghee 1L                 unit litre   buy ₹    537  sell ₹    630  opening  20  low-stock 6
+  Wheat Atta 10kg Bag          unit bag     buy ₹    379  sell ₹    445  opening  20  low-stock 6
+  Bombay Rava 1kg              unit kg      buy ₹  41.50  sell ₹     50  opening  80  low-stock 20
+  Poha 1kg                     unit kg      buy ₹     49  sell ₹     60  opening  50  low-stock 15
+  Jaggery 1kg                  unit kg      buy ₹     55  sell ₹     68  opening  50  low-stock 15
+  Salt 1kg                     unit kg      buy ₹  19.50  sell ₹     26  opening 100  low-stock 30
+  Detergent Powder 1kg         unit kg      buy ₹  90.50  sell ₹    112  opening  40  low-stock 12
+  Tea Powder 1kg               unit kg      buy ₹    404  sell ₹    485  opening  20  low-stock 6
+  Filter Coffee Powder 1kg     unit kg      buy ₹    611  sell ₹    730  opening  25  low-stock 8
+  Red Chilli Powder 500g       unit packet  buy ₹    126  sell ₹    155  opening  50  low-stock 15
+  Turmeric Powder 500g         unit packet  buy ₹  86.50  sell ₹    108  opening  40  low-stock 12
+  Mustard Seeds 1kg            unit kg      buy ₹  96.50  sell ₹    120  opening  20  low-stock 6
+  Tamarind 1kg                 unit kg      buy ₹    138  sell ₹    172  opening  25  low-stock 8
+  Cashew Kernels 1kg           unit kg      buy ₹    749  sell ₹    890  opening   8  low-stock 3
+
+Parties (Parties page). Name, type, payment terms in days:
+  Sri Guru Raghavendra Darshini    customer  15 days
+  Annapoorna Tiffin Centre         customer  15 days
+  Vinayaka Veg Restaurant          customer  21 days
+  Green Nest PG Kitchen            customer  30 days
+  Kaveri Sweets and Bakery         customer  15 days
+  Hanuman Condiments               customer  15 days
+  Brindavan Caterers               customer  21 days   (first order 22 October 2026; can be added any time before that)
+  Sri Chowdeshwari Mess            customer  15 days   (first order 27 October 2026; can be added any time before that)
+  Sri Balaji Agro Traders          supplier  21 days
+  Kaveri Agencies                  supplier  15 days
+  Shree Ganesh Wholesale Agencies  supplier  21 days
+  Coorg Plantation Traders         supplier  30 days
+
+B1. PURCHASES  (Smart Input, 38 entries, oldest first)
+--------------------------------------------------------------------------------------------
+Where a sentence says "paid ₹X", type X in Amount paid on the confirm screen; otherwise leave 0.
+
+Received 46 bags Sona Masoori rice and 29 bags idli rice from Sri Balaji Agro Traders on 15 July 2026.   [PO-0001]
+Purchased 290 litres sunflower oil, 50 litres groundnut oil and 46 litres pure ghee from Kaveri Agencies on 15 July 2026.   [PO-0002]
+Purchased 100 kg toor dal, 125 kg urad dal, 25 kg moong dal, 25 kg chana dal, 550 kg sugar, 6 bags wheat atta, 150 kg Bombay rava, 20 kg poha, 40 kg jaggery, 150 kg salt and 50 kg detergent powder from Shree Ganesh Wholesale Agencies on 15 July 2026.   [PO-0003]
+Purchased 24 kg tea powder, 44 kg filter coffee powder, 150 packets red chilli powder, 60 packets turmeric powder, 10 kg mustard seeds, 25 kg tamarind and 16 kg cashew kernels from Coorg Plantation Traders on 15 July 2026.   [PO-0004]
+Purchased 75 kg toor dal, 75 kg urad dal, 50 kg chana dal, 400 kg sugar, 6 bags wheat atta, 100 kg Bombay rava and 30 kg jaggery from Shree Ganesh Wholesale Agencies on 25 July 2026.   [PO-0005]
+Received 37 bags Sona Masoori rice, 19 bags idli rice and 7 bags basmati rice from Sri Balaji Agro Traders on 27 July 2026.   [PO-0006]
+Kaveri Agencies sold us 220 litres sunflower oil, 30 litres groundnut oil and 36 litres pure ghee on 27 July 2026.   [PO-0007]
+Shree Ganesh Wholesale Agencies sold us 100 kg toor dal, 50 kg urad dal, 25 kg moong dal, 400 kg sugar, 12 bags wheat atta, 75 kg Bombay rava, 30 kg poha, 30 kg jaggery, 125 kg salt and 50 kg detergent powder on 4 August 2026.   [PO-0008]
+Purchased 34 kg tea powder, 30 kg filter coffee powder, 50 packets red chilli powder, 60 packets turmeric powder, 24 kg mustard seeds, 25 kg tamarind and 19 kg cashew kernels from Coorg Plantation Traders on 4 August 2026.   [PO-0009]
+Purchased 37 bags Sona Masoori rice and 32 bags idli rice from Sri Balaji Agro Traders on 8 August 2026.   [PO-0010]
+Received 300 litres sunflower oil and 18 litres pure ghee from Kaveri Agencies on 8 August 2026.   [PO-0011]
+Shree Ganesh Wholesale Agencies sold us 100 kg urad dal, 50 kg chana dal, 350 kg sugar, 50 kg Bombay rava and 75 kg salt on 14 August 2026.   [PO-0012]
+Sri Balaji Agro Traders sold us 32 bags Sona Masoori rice and 18 bags idli rice on 20 August 2026.   [PO-0013]
+Purchased 200 litres sunflower oil, 70 litres groundnut oil and 32 litres pure ghee from Kaveri Agencies on 20 August 2026.   [PO-0014]
+Purchased 125 kg toor dal, 75 kg urad dal, 25 kg moong dal, 50 kg chana dal, 500 kg sugar, 100 kg Bombay rava, 40 kg poha, 150 kg salt and 60 kg detergent powder from Shree Ganesh Wholesale Agencies on 24 August 2026.   [PO-0015]
+Coorg Plantation Traders sold us 20 kg tea powder, 36 kg filter coffee powder, 130 packets red chilli powder, 40 packets turmeric powder, 22 kg mustard seeds and 25 kg tamarind on 24 August 2026.   [PO-0016]
+Purchased 29 bags Sona Masoori rice and 16 bags idli rice from Sri Balaji Agro Traders on 1 September 2026.   [PO-0017]
+Kaveri Agencies se 290 litre sunflower oil aur 30 litre groundnut oil kharida on 1 September 2026.   [PO-0018]
+Purchased 100 kg toor dal, 75 kg urad dal, 400 kg sugar, 15 bags wheat atta, 150 kg Bombay rava, 20 kg jaggery, 175 kg salt and 40 kg detergent powder from Shree Ganesh Wholesale Agencies on 3 September 2026.   [PO-0019]
+Sri Balaji Agro Traders sold us 27 bags Sona Masoori rice and 23 bags idli rice on 13 September 2026.   [PO-0020]
+Purchased 250 litres sunflower oil, 30 litres groundnut oil and 34 litres pure ghee from Kaveri Agencies on 13 September 2026.   [PO-0021]
+Shree Ganesh Wholesale Agencies sold us 100 kg toor dal, 75 kg urad dal, 50 kg moong dal, 350 kg sugar, 30 kg poha and 30 kg detergent powder on 13 September 2026.   [PO-0022]
+Received 26 kg tea powder, 34 kg filter coffee powder, 90 packets red chilli powder, 40 packets turmeric powder, 10 kg mustard seeds, 20 kg tamarind and 9 kg cashew kernels from Coorg Plantation Traders on 13 September 2026.   [PO-0023]
+Shree Ganesh Wholesale Agencies sold us 100 kg toor dal, 125 kg urad dal, 50 kg chana dal, 450 kg sugar, 18 bags wheat atta, 150 kg Bombay rava, 40 kg poha, 30 kg jaggery, 150 kg salt and 30 kg detergent powder on 23 September 2026.   [PO-0024]
+Sri Balaji Agro Traders sold us 33 bags Sona Masoori rice and 32 bags idli rice on 25 September 2026.   [PO-0025]
+Received 340 litres sunflower oil, 80 litres groundnut oil and 40 litres pure ghee from Kaveri Agencies on 25 September 2026.   [PO-0026]
+Purchased 100 kg toor dal, 75 kg urad dal, 400 kg sugar, 14 bags wheat atta, 75 kg Bombay rava, 100 kg salt and 30 kg detergent powder from Shree Ganesh Wholesale Agencies on 3 October 2026.   [PO-0027]
+Purchased 24 kg tea powder, 48 kg filter coffee powder, 110 packets red chilli powder, 40 packets turmeric powder, 18 kg mustard seeds, 70 kg tamarind and 11 kg cashew kernels from Coorg Plantation Traders on 3 October 2026.   [PO-0028]
+Received 53 bags Sona Masoori rice and 33 bags idli rice from Sri Balaji Agro Traders on 7 October 2026.   [PO-0029]
+Purchased 320 litres sunflower oil from Kaveri Agencies on 7 October 2026.   [PO-0030]
+---- Demonstration period starts: 13 October 2026 ----
+Purchased 150 kg toor dal, 125 kg urad dal, 75 kg chana dal, 650 kg sugar, 8 bags wheat atta, 125 kg Bombay rava, 50 kg poha, 60 kg jaggery, 75 kg salt and 30 kg detergent powder from Shree Ganesh Wholesale Agencies on 13 October 2026.   [PO-0031]
+Sri Balaji Agro Traders se 43 bags Sona Masoori rice aur 27 bags idli rice kharida on 19 October 2026.   [PO-0032]
+Purchased 300 litres sunflower oil, 30 litres groundnut oil and 52 litres pure ghee from Kaveri Agencies on 19 October 2026.   [PO-0033]
+Purchased 125 kg toor dal, 75 kg urad dal, 50 kg moong dal, 500 kg sugar, 17 bags wheat atta, 100 kg Bombay rava, 40 kg jaggery, 100 kg salt and 30 kg detergent powder from Shree Ganesh Wholesale Agencies on 23 October 2026.   [PO-0034]
+Received 58 kg tea powder, 46 kg filter coffee powder, 190 packets red chilli powder, 70 packets turmeric powder, 32 kg mustard seeds and 30 kg tamarind from Coorg Plantation Traders on 23 October 2026.   [PO-0035]
+Purchased 98 bags Sona Masoori rice and 21 bags idli rice from Sri Balaji Agro Traders on 31 October 2026.   [PO-0036]
+Kaveri Agencies sold us 630 litres sunflower oil, 90 litres groundnut oil and 30 litres pure ghee on 31 October 2026.   [PO-0037]
+Purchased 225 kg toor dal, 100 kg urad dal, 50 kg moong dal, 500 kg sugar, 23 bags wheat atta, 150 kg Bombay rava, 80 kg poha, 125 kg salt and 70 kg detergent powder from Shree Ganesh Wholesale Agencies on 2 November 2026.   [PO-0038]
+
+B2. SALES  (Smart Input, 144 entries, oldest first)
+--------------------------------------------------------------------------------------------
+Where a sentence says "paid ₹X", type X in Amount paid on the confirm screen; otherwise leave 0
+(credit). The tag in brackets is the invoice number SmartSME will give it; do not paste it.
+
+Sold 1 kg detergent powder and 4 kg sugar to a walk-in customer, paid ₹315/- by UPI, on 15 July 2026.   [SLP-0001]
+Sold 6 bags idli rice, 3 bags Sona Masoori rice, 20 kg urad dal, 9 kg chana dal, 35 litres sunflower oil, 5 kg filter coffee powder, 15 kg Bombay rava, 15 kg salt, 5 packets red chilli powder and 4 packets turmeric powder to Annapoorna Tiffin Centre on 16 July 2026.   [SLP-0002]
+Sold 7 bags Sona Masoori rice, 25 kg toor dal, 45 litres sunflower oil, 5 litres pure ghee, 30 kg sugar, 5 kg tea powder, 15 packets red chilli powder, 5 kg tamarind, 2 bags wheat atta, 3 kg mustard seeds, 15 kg salt and 2 bags basmati rice to Vinayaka Veg Restaurant at a discount of 2%, on 16 July 2026.   [SLP-0003]
+Kaveri Sweets and Bakery bought 80 kg sugar, 15 litres pure ghee, 3 kg cashew kernels, 25 kg Bombay rava, 20 litres groundnut oil and 15 kg jaggery from us, paid ₹23,257.50/- by UPI, on 17 July 2026.   [SLP-0004]
+Hanuman Condiments bought 60 kg sugar, 15 kg toor dal, 30 kg salt, 20 kg detergent powder, 15 kg poha, 5 kg tea powder, 15 litres sunflower oil, 10 kg moong dal and 8 kg chana dal from us, paid ₹16,861.95/- in cash, on 17 July 2026.   [SLP-0005]
+A customer bought 1 kg urad dal, 1 bag Sona Masoori rice, 1 kg tea powder and 1 kg toor dal from us, paid ₹2,474.85/- in cash, on 18 July 2026.   [SLP-0006]
+A customer bought 1 kg filter coffee powder, 1 packet red chilli powder, 2 kg Bombay rava and 1 kg poha from us, paid ₹1,097.25/- by UPI, on 21 July 2026.   [SLP-0007]
+Sold 6 bags idli rice, 4 bags Sona Masoori rice, 35 kg urad dal, 15 kg chana dal, 40 litres sunflower oil, 60 kg sugar, 6 kg filter coffee powder, 20 kg Bombay rava, 7 kg tamarind, 8 packets red chilli powder and 5 packets turmeric powder to Sri Guru Raghavendra Darshini on 22 July 2026.   [SLP-0008]
+Vinayaka Veg Restaurant bought 9 bags Sona Masoori rice, 30 kg toor dal, 40 litres sunflower oil, 40 kg sugar, 5 kg tea powder, 10 packets red chilli powder, 6 packets turmeric powder, 3 bags wheat atta, 7 kg moong dal, 3 kg mustard seeds and 2 bags basmati rice from us on 22 July 2026.   [SLP-0009]
+Annapoorna Tiffin Centre ko 7 bags idli rice, 3 bags Sona Masoori rice, 30 kg urad dal, 8 kg chana dal, 35 kg sugar, 5 kg filter coffee powder, 15 kg Bombay rava, 3 kg mustard seeds, 5 packets red chilli powder aur 4 packets turmeric powder becha on 23 July 2026.   [SLP-0010]
+Sold 90 kg sugar, 15 litres pure ghee, 4 kg cashew kernels, 30 kg Bombay rava, 15 litres groundnut oil and 15 kg jaggery to Kaveri Sweets and Bakery, paid ₹23,898/- by UPI, on 24 July 2026.   [SLP-0011]
+A customer bought 1 bag wheat atta and 1 litre sunflower oil from us, paid ₹631.05/- in cash, on 24 July 2026.   [SLP-0012]
+Green Nest PG Kitchen bought 9 bags Sona Masoori rice, 5 bags wheat atta, 35 kg toor dal, 40 litres sunflower oil, 35 kg sugar, 4 kg tea powder, 15 kg poha, 15 kg Bombay rava, 10 kg detergent powder, 7 packets red chilli powder and 4 packets turmeric powder from us at a discount of 2%, on 25 July 2026.   [SLP-0013]
+Sold 70 kg sugar, 25 kg toor dal, 35 kg salt, 15 kg Bombay rava, 15 packets turmeric powder, 25 litres sunflower oil and 8 kg chana dal to Hanuman Condiments, paid ₹16,132.20/- in cash, on 27 July 2026.   [SLP-0014]
+Sold 1 packet red chilli powder and 2 kg detergent powder to a walk-in customer, paid ₹397.95/- in cash, on 27 July 2026.   [SLP-0015]
+Supplied 8 bags idli rice, 4 bags Sona Masoori rice, 30 kg urad dal, 35 litres sunflower oil, 45 kg sugar, 6 kg filter coffee powder, 4 kg mustard seeds, 5 packets turmeric powder and 6 kg jaggery to Sri Guru Raghavendra Darshini on 29 July 2026.   [SLP-0016]
+Sold 8 bags Sona Masoori rice, 25 kg toor dal, 45 litres sunflower oil, 3 litres pure ghee, 40 kg sugar, 4 kg tea powder, 6 packets turmeric powder, 6 kg tamarind, 8 kg moong dal and 3 kg mustard seeds to Vinayaka Veg Restaurant on 30 July 2026.   [SLP-0017]
+Sold 1 bag wheat atta, 1 kg Bombay rava and 2 kg urad dal to a walk-in customer, paid ₹826.35/- in cash, on 30 July 2026.   [SLP-0018]
+Annapoorna Tiffin Centre ko 7 bags idli rice, 20 kg urad dal, 40 kg sugar, 5 kg filter coffee powder, 15 kg Bombay rava, 15 kg salt, 3 kg mustard seeds, 4 kg tamarind aur 4 packets turmeric powder becha on 31 July 2026.   [SLP-0019]
+Kaveri Sweets and Bakery bought 100 kg sugar, 10 litres pure ghee, 6 kg cashew kernels and 20 kg jaggery from us, paid ₹18,585/- by UPI, on 1 August 2026.   [SLP-0020]
+Green Nest PG Kitchen bought 10 bags Sona Masoori rice, 5 bags wheat atta, 10 kg moong dal, 40 litres sunflower oil, 35 kg sugar, 5 kg tea powder, 15 kg salt, 15 kg Bombay rava and 15 kg detergent powder from us on 3 August 2026.   [SLP-0021]
+Sold 1 kg filter coffee powder, 2 kg Bombay rava and 3 kg sugar to a walk-in customer, paid ₹1,019.55/- in cash, on 3 August 2026.   [SLP-0022]
+Sri Guru Raghavendra Darshini bought 7 bags idli rice, 3 bags Sona Masoori rice, 25 kg urad dal, 35 litres sunflower oil, 45 kg sugar, 6 kg filter coffee powder, 20 kg Bombay rava, 4 kg mustard seeds, 5 kg tamarind, 7 packets red chilli powder and 5 kg jaggery from us at a discount of 2%, on 4 August 2026.   [SLP-0023]
+A customer bought 2 kg jaggery and 1 kg moong dal from us, paid ₹281.40/- in cash, on 5 August 2026.   [SLP-0024]
+Hanuman Condiments bought 65 kg sugar, 25 kg toor dal, 40 kg salt, 20 kg detergent powder, 20 packets red chilli powder, 15 packets turmeric powder, 25 litres sunflower oil and 15 kg chana dal from us, paid ₹21,525/- in cash, on 6 August 2026.   [SLP-0025]
+Sold 8 bags idli rice, 3 bags Sona Masoori rice, 20 kg urad dal, 30 litres sunflower oil, 40 kg sugar, 6 kg filter coffee powder, 3 kg mustard seeds, 8 packets red chilli powder and 4 packets turmeric powder to Annapoorna Tiffin Centre on 7 August 2026.   [SLP-0026]
+Supplied 8 bags Sona Masoori rice, 50 litres sunflower oil, 15 litres groundnut oil, 4 litres pure ghee, 35 kg sugar, 4 kg tea powder, 5 packets turmeric powder, 5 kg tamarind and 15 kg salt to Vinayaka Veg Restaurant on 7 August 2026.   [SLP-0027]
+A customer bought 1 kg filter coffee powder, 2 litres sunflower oil and 2 kg jaggery from us, paid ₹1,236.90/- by UPI, on 7 August 2026.   [SLP-0028]
+Kaveri Sweets and Bakery bought 105 kg sugar, 10 litres pure ghee, 30 kg Bombay rava and 25 litres groundnut oil from us, paid ₹18,621.75/- by UPI, on 9 August 2026.   [SLP-0029]
+Sold 6 bags idli rice, 4 bags Sona Masoori rice, 35 kg urad dal, 15 kg chana dal, 35 litres sunflower oil, 50 kg sugar, 6 kg filter coffee powder, 20 kg Bombay rava, 20 kg salt, 3 kg mustard seeds and 7 kg tamarind to Sri Guru Raghavendra Darshini at a discount of 2%, on 10 August 2026.   [SLP-0030]
+Sold 2 kg toor dal and 1 packet red chilli powder to a walk-in customer, paid ₹511.35/- by UPI, on 11 August 2026.   [SLP-0031]
+A customer bought 3 litres sunflower oil and 2 kg urad dal from us, paid ₹798/- in cash, on 13 August 2026.   [SLP-0032]
+Sold 7 bags Sona Masoori rice, 25 kg toor dal, 45 litres sunflower oil, 4 litres pure ghee, 35 kg sugar, 4 kg tea powder, 10 packets red chilli powder, 7 packets turmeric powder and 15 kg salt to Vinayaka Veg Restaurant on 14 August 2026.   [SLP-0033]
+Sold 6 bags idli rice, 3 bags Sona Masoori rice, 20 kg urad dal, 9 kg chana dal, 25 litres sunflower oil, 40 kg sugar, 5 kg filter coffee powder, 15 kg Bombay rava, 20 kg salt, 3 kg mustard seeds and 6 packets red chilli powder to Annapoorna Tiffin Centre on 15 August 2026.   [SLP-0034]
+Green Nest PG Kitchen bought 12 bags Sona Masoori rice, 5 bags wheat atta, 30 kg toor dal, 15 kg moong dal, 45 litres sunflower oil, 35 kg sugar, 5 kg tea powder, 15 kg poha and 15 kg Bombay rava from us at a discount of 2%, on 15 August 2026.   [SLP-0035]
+Sold 75 kg sugar, 20 kg toor dal, 40 kg salt, 20 kg detergent powder, 15 kg Bombay rava and 20 packets red chilli powder to Hanuman Condiments, paid ₹14,673.75/- in cash, on 15 August 2026.   [SLP-0036]
+Sold 2 kg Bombay rava, 1 bag Sona Masoori rice and 1 kg moong dal to a walk-in customer, paid ₹1,881.60/- by UPI, on 16 August 2026.   [SLP-0037]
+Sold 7 bags idli rice, 4 bags Sona Masoori rice, 30 kg urad dal, 15 kg chana dal, 45 litres sunflower oil, 60 kg sugar, 7 kg filter coffee powder, 30 kg Bombay rava, 5 kg mustard seeds, 8 packets red chilli powder and 6 kg jaggery to Sri Guru Raghavendra Darshini on 18 August 2026.   [SLP-0038]
+Kaveri Sweets and Bakery bought 80 kg sugar, 15 litres pure ghee, 5 kg cashew kernels, 20 kg Bombay rava and 20 litres groundnut oil from us, paid ₹23,793/- by UPI, on 18 August 2026.   [SLP-0039]
+A customer bought 2 kg detergent powder and 2 litres groundnut oil from us, paid ₹655.20/- by UPI, on 19 August 2026.   [SLP-0040]
+Sold 30 kg urad dal, 8 kg chana dal, 35 litres sunflower oil, 40 kg sugar, 5 kg filter coffee powder, 3 kg mustard seeds, 6 packets red chilli powder, 4 packets turmeric powder and 5 kg jaggery to Annapoorna Tiffin Centre on 22 August 2026.   [SLP-0041]
+Sold 8 bags Sona Masoori rice, 30 kg toor dal, 40 litres sunflower oil, 30 kg sugar, 6 kg tea powder, 5 packets turmeric powder, 5 kg tamarind and 15 kg salt to Vinayaka Veg Restaurant on 22 August 2026.   [SLP-0042]
+Hanuman Condiments bought 75 kg sugar, 45 kg salt, 15 kg detergent powder, 15 kg poha, 30 packets red chilli powder, 3 kg tea powder, 20 litres sunflower oil and 15 kg chana dal from us, paid ₹18,789.75/- in cash, on 23 August 2026.   [SLP-0043]
+Sold 2 kg poha and 5 kg sugar to a walk-in customer, paid ₹372.75/- by UPI, on 23 August 2026.   [SLP-0044]
+Sold 9 bags idli rice, 25 kg urad dal, 45 litres sunflower oil, 60 kg sugar, 8 kg filter coffee powder, 25 kg Bombay rava, 15 kg salt, 5 kg mustard seeds, 6 kg tamarind, 6 packets red chilli powder and 5 packets turmeric powder to Sri Guru Raghavendra Darshini on 25 August 2026.   [SLP-0045]
+Green Nest PG Kitchen bought 10 bags Sona Masoori rice, 6 bags wheat atta, 40 kg toor dal, 10 kg moong dal, 45 litres sunflower oil, 30 kg sugar, 5 kg tea powder, 15 kg salt, 15 kg Bombay rava and 8 kg detergent powder from us on 25 August 2026.   [SLP-0046]
+Sold 1 bag wheat atta, 1 kg filter coffee powder and 1 packet red chilli powder to a walk-in customer, paid ₹1,396.50/- by UPI, on 26 August 2026.   [SLP-0047]
+Sold 105 kg sugar, 15 litres pure ghee, 5 kg cashew kernels, 25 kg Bombay rava and 20 litres groundnut oil to Kaveri Sweets and Bakery, paid ₹25,289.25/- by UPI, on 28 August 2026.   [SLP-0048]
+Sold 6 bags idli rice, 3 bags Sona Masoori rice, 30 kg urad dal, 7 kg chana dal, 25 litres sunflower oil, 45 kg sugar, 7 kg filter coffee powder, 25 kg Bombay rava, 20 kg salt, 3 kg tamarind, 7 packets red chilli powder and 4 packets turmeric powder to Annapoorna Tiffin Centre on 29 August 2026.   [SLP-0049]
+Supplied 7 bags Sona Masoori rice, 25 kg toor dal, 45 litres sunflower oil, 10 litres groundnut oil, 35 kg sugar, 5 kg tea powder, 10 packets red chilli powder, 3 bags wheat atta, 15 kg salt and 2 bags basmati rice to Vinayaka Veg Restaurant on 29 August 2026.   [SLP-0050]
+A customer bought 2 kg toor dal, 1 kg jaggery, 2 kg Bombay rava and 1 kg moong dal from us, paid ₹663.60/- by UPI, on 29 August 2026.   [SLP-0051]
+Sold 65 kg sugar, 30 kg toor dal, 45 kg salt, 20 kg detergent powder and 25 litres sunflower oil to Hanuman Condiments, paid ₹16,112.25/- in cash, on 31 August 2026.   [SLP-0052]
+A customer bought 2 kg urad dal and 2 packets red chilli powder from us, paid ₹632.10/- in cash, on 31 August 2026.   [SLP-0053]
+Sold 8 bags idli rice, 4 bags Sona Masoori rice, 25 kg urad dal, 10 kg chana dal, 40 litres sunflower oil, 45 kg sugar, 30 kg Bombay rava, 20 kg salt, 4 kg mustard seeds, 5 kg tamarind, 9 packets red chilli powder and 5 kg jaggery to Sri Guru Raghavendra Darshini at a discount of 2%, on 1 September 2026.   [SLP-0054]
+Sold 11 bags Sona Masoori rice, 35 kg toor dal, 15 kg moong dal, 45 litres sunflower oil, 35 kg sugar, 5 kg tea powder, 15 kg salt, 15 kg poha, 15 kg Bombay rava, 15 kg detergent powder and 5 packets turmeric powder to Green Nest PG Kitchen on 4 September 2026.   [SLP-0055]
+Sold 1 kg tea powder and 2 litres sunflower oil to a walk-in customer, paid ₹836.85/- in cash, on 4 September 2026.   [SLP-0056]
+Sold 7 bags idli rice, 3 bags Sona Masoori rice, 30 kg urad dal, 7 kg chana dal, 30 litres sunflower oil, 35 kg sugar, 8 kg filter coffee powder, 15 kg Bombay rava, 3 kg mustard seeds, 7 packets red chilli powder and 4 packets turmeric powder to Annapoorna Tiffin Centre at a discount of 2%, on 5 September 2026.   [SLP-0057]
+Sold 110 kg sugar, 15 litres pure ghee, 4 kg cashew kernels, 25 kg Bombay rava, 20 litres groundnut oil and 15 kg jaggery to Kaveri Sweets and Bakery, paid ₹25,672.50/- by UPI, on 5 September 2026.   [SLP-0058]
+Vinayaka Veg Restaurant bought 9 bags Sona Masoori rice, 30 kg toor dal, 50 litres sunflower oil, 15 litres groundnut oil, 6 litres pure ghee, 45 kg sugar, 5 kg tea powder, 10 packets red chilli powder, 5 packets turmeric powder, 6 kg tamarind and 4 bags wheat atta from us on 6 September 2026.   [SLP-0059]
+Sri Guru Raghavendra Darshini bought 7 bags idli rice, 30 kg urad dal, 45 litres sunflower oil, 50 kg sugar, 7 kg filter coffee powder, 4 kg mustard seeds, 9 packets red chilli powder and 4 packets turmeric powder from us on 7 September 2026.   [SLP-0060]
+Sold 1 kg detergent powder, 2 litres sunflower oil, 1 kg salt and 2 kg Bombay rava to a walk-in customer, paid ₹577.50/- by UPI, on 7 September 2026.   [SLP-0061]
+Hanuman Condiments bought 65 kg sugar, 30 kg toor dal, 45 kg salt, 20 kg detergent powder, 15 kg poha, 30 packets red chilli powder, 15 packets turmeric powder, 5 kg tea powder, 30 litres sunflower oil, 10 kg moong dal and 15 kg chana dal from us, paid ₹29,856.75/- in cash, on 9 September 2026.   [SLP-0062]
+Sold 3 kg sugar, 2 kg urad dal, 1 packet red chilli powder and 1 kg toor dal to a walk-in customer, paid ₹791.70/- by UPI, on 9 September 2026.   [SLP-0063]
+Sold 1 bag wheat atta and 1 packet red chilli powder to a walk-in customer, paid ₹630/- in cash, on 11 September 2026.   [SLP-0064]
+Sri Guru Raghavendra Darshini bought 9 bags idli rice, 35 kg urad dal, 35 litres sunflower oil, 65 kg sugar, 8 kg filter coffee powder, 25 kg salt, 4 kg mustard seeds, 8 kg tamarind and 9 packets red chilli powder from us on 13 September 2026.   [SLP-0065]
+Annapoorna Tiffin Centre bought 5 bags idli rice, 30 kg urad dal, 8 kg chana dal, 35 litres sunflower oil, 45 kg sugar, 7 kg filter coffee powder, 20 kg Bombay rava, 15 kg salt, 3 kg mustard seeds, 6 kg tamarind, 7 packets red chilli powder and 3 packets turmeric powder from us on 13 September 2026.   [SLP-0066]
+Vinayaka Veg Restaurant bought 7 bags Sona Masoori rice, 30 kg toor dal, 50 litres sunflower oil, 6 litres pure ghee, 35 kg sugar, 10 packets red chilli powder, 7 packets turmeric powder, 6 kg tamarind, 4 bags wheat atta and 15 kg salt from us at a discount of 2%, on 13 September 2026.   [SLP-0067]
+Sold 12 bags Sona Masoori rice, 5 bags wheat atta, 35 kg toor dal, 45 litres sunflower oil, 40 kg sugar, 5 kg tea powder, 15 kg salt, 15 kg poha, 15 kg Bombay rava, 10 kg detergent powder, 8 packets red chilli powder and 5 packets turmeric powder to Green Nest PG Kitchen at a discount of 2%, on 14 September 2026.   [SLP-0068]
+Sold 105 kg sugar, 15 litres pure ghee, 4 kg cashew kernels, 20 kg Bombay rava and 20 litres groundnut oil to Kaveri Sweets and Bakery, paid ₹24,092.25/- by UPI, on 15 September 2026.   [SLP-0069]
+A customer bought 3 litres sunflower oil, 1 bag Sona Masoori rice, 1 bag wheat atta and 1 litre groundnut oil from us, paid ₹2,806.65/- in cash, on 15 September 2026.   [SLP-0070]
+Hanuman Condiments bought 70 kg sugar, 40 kg salt, 20 kg detergent powder, 15 kg Bombay rava, 15 kg poha, 30 packets red chilli powder, 15 packets turmeric powder, 5 kg tea powder, 20 litres sunflower oil and 15 kg chana dal from us, paid ₹22,501.50/- in cash, on 17 September 2026.   [SLP-0071]
+A customer bought 2 kg poha and 1 bag Sona Masoori rice from us, paid ₹1,764/- by UPI, on 17 September 2026.   [SLP-0072]
+Sold 10 bags idli rice, 35 kg urad dal, 10 kg chana dal, 50 litres sunflower oil, 45 kg sugar, 9 kg filter coffee powder, 25 kg Bombay rava, 4 kg mustard seeds, 7 kg tamarind, 7 packets red chilli powder and 5 kg jaggery to Sri Guru Raghavendra Darshini on 20 September 2026.   [SLP-0073]
+Sold 7 bags idli rice, 3 bags Sona Masoori rice, 30 kg urad dal, 35 litres sunflower oil, 35 kg sugar, 8 kg filter coffee powder, 15 kg salt, 3 kg mustard seeds, 8 packets red chilli powder, 4 packets turmeric powder and 5 kg jaggery to Annapoorna Tiffin Centre on 20 September 2026.   [SLP-0074]
+Vinayaka Veg Restaurant bought 7 bags Sona Masoori rice, 25 kg toor dal, 55 litres sunflower oil, 15 litres groundnut oil, 45 kg sugar, 5 kg tea powder, 10 packets red chilli powder, 6 kg tamarind, 3 bags wheat atta, 3 kg mustard seeds and 15 kg salt from us at a discount of 2%, on 20 September 2026.   [SLP-0075]
+Sold 1 bag Sona Masoori rice and 1 kg poha to a walk-in customer, paid ₹1,701/- by UPI, on 21 September 2026.   [SLP-0076]
+Sold 130 kg sugar, 10 litres pure ghee, 6 kg cashew kernels, 30 kg Bombay rava and 20 litres groundnut oil to Kaveri Sweets and Bakery, paid ₹24,412.50/- by UPI, on 24 September 2026.   [SLP-0077]
+Sold 2 litres sunflower oil and 2 kg toor dal to a walk-in customer, paid ₹676.20/- in cash, on 24 September 2026.   [SLP-0078]
+Sold 12 bags Sona Masoori rice, 6 bags wheat atta, 40 kg toor dal, 15 kg moong dal, 50 litres sunflower oil, 40 kg sugar and 10 kg detergent powder to Green Nest PG Kitchen on 25 September 2026.   [SLP-0079]
+A customer bought 2 kg jaggery and 1 kg poha from us, paid ₹205.80/- in cash, on 26 September 2026.   [SLP-0080]
+Sri Guru Raghavendra Darshini ko 8 bags idli rice, 5 bags Sona Masoori rice, 35 kg urad dal, 9 kg chana dal, 35 litre sunflower oil, 40 kg sugar, 8 kg filter coffee powder, 30 kg Bombay rava, 20 kg salt, 8 kg tamarind aur 7 packets red chilli powder becha on 27 September 2026.   [SLP-0081]
+Sold 7 bags idli rice, 3 bags Sona Masoori rice, 30 kg urad dal, 8 kg chana dal, 40 litres sunflower oil, 45 kg sugar, 5 kg filter coffee powder, 25 kg Bombay rava and 6 kg jaggery to Annapoorna Tiffin Centre at a discount of 2%, on 28 September 2026.   [SLP-0082]
+Vinayaka Veg Restaurant ge 9 bags Sona Masoori rice, 35 kg toor dal, 15 litres groundnut oil, 6 litres pure ghee, 35 kg sakkare, 4 kg tea powder, 15 packets red chilli powder, 7 kg tamarind, 4 bags wheat atta, 8 kg moong dal mattu 15 kg salt maride on 28 September 2026.   [SLP-0083]
+Sold 60 kg sugar, 20 kg toor dal, 40 kg salt, 20 kg detergent powder, 15 kg poha and 5 kg tea powder to Hanuman Condiments, paid ₹13,382.25/- in cash, on 28 September 2026.   [SLP-0084]
+Sold 1 kg toor dal and 1 kg detergent powder to a walk-in customer, paid ₹291.90/- in cash, on 29 September 2026.   [SLP-0085]
+Sold 2 kg detergent powder, 2 kg poha and 2 kg salt to a walk-in customer, paid ₹415.80/- in cash, on 1 October 2026.   [SLP-0086]
+Sold 95 kg sugar, 15 litres pure ghee, 3 kg cashew kernels, 30 kg Bombay rava and 20 kg jaggery to Kaveri Sweets and Bakery, paid ₹20,417.25/- by UPI, on 3 October 2026.   [SLP-0087]
+Sold 8 bags idli rice, 30 kg urad dal, 30 litres sunflower oil, 50 kg sugar, 7 kg filter coffee powder, 25 kg Bombay rava and 4 packets turmeric powder to Annapoorna Tiffin Centre on 4 October 2026.   [SLP-0088]
+Sold 8 bags idli rice, 5 bags Sona Masoori rice, 35 kg urad dal, 35 litres sunflower oil, 60 kg sugar, 9 kg filter coffee powder, 3 kg mustard seeds and 8 kg jaggery to Sri Guru Raghavendra Darshini on 5 October 2026.   [SLP-0089]
+Vinayaka Veg Restaurant ge 7 bags Sona Masoori rice, 30 kg toor dal, 60 litres sunflower oil, 45 kg sakkare, 4 kg tea powder, 15 packets red chilli powder, 6 packets turmeric powder mattu 2 bags wheat atta maride on 5 October 2026.   [SLP-0090]
+Sold 11 bags Sona Masoori rice, 6 bags wheat atta, 40 kg toor dal, 45 litres sunflower oil, 35 kg sugar, 5 kg tea powder, 15 kg salt, 15 kg poha, 8 packets red chilli powder and 5 packets turmeric powder to Green Nest PG Kitchen at a discount of 2%, on 5 October 2026.   [SLP-0091]
+Sold 1 packet red chilli powder, 1 kg moong dal and 1 kg jaggery to a walk-in customer, paid ₹372.75/- in cash, on 5 October 2026.   [SLP-0092]
+Hanuman Condiments bought 55 kg sugar, 25 kg toor dal, 35 kg salt, 25 kg detergent powder, 15 kg poha, 25 packets red chilli powder, 15 packets turmeric powder, 5 kg tea powder, 20 litres sunflower oil and 10 kg chana dal from us, paid ₹24,480.75/- in cash, on 6 October 2026.   [SLP-0093]
+A customer bought 2 kg Bombay rava, 1 bag wheat atta and 1 bag Sona Masoori rice from us, paid ₹2,210.25/- by UPI, on 7 October 2026.   [SLP-0094]
+Sold 2 kg poha, 1 kg moong dal, 2 litres groundnut oil and 1 packet red chilli powder to a walk-in customer, paid ₹847.35/- by UPI, on 9 October 2026.   [SLP-0095]
+Sold 110 kg sugar, 15 litres pure ghee, 30 kg Bombay rava and 20 kg jaggery to Kaveri Sweets and Bakery, paid ₹18,354/- by UPI, on 11 October 2026.   [SLP-0096]
+Sri Guru Raghavendra Darshini ko 9 bags idli rice, 5 bags Sona Masoori rice, 35 kg urad dal, 10 kg chana dal, 40 litre sunflower oil, 50 kg sugar, 9 kg filter coffee powder, 25 kg Bombay rava, 4 kg mustard seeds aur 8 kg tamarind becha on 12 October 2026.   [SLP-0097]
+Sold 6 bags idli rice, 3 bags Sona Masoori rice, 25 kg urad dal, 10 kg chana dal, 40 litres sunflower oil, 45 kg sugar, 8 kg filter coffee powder, 15 kg salt, 6 packets red chilli powder and 4 packets turmeric powder to Annapoorna Tiffin Centre at a discount of 2%, on 12 October 2026.   [SLP-0098]
+Sold 9 bags Sona Masoori rice, 30 kg toor dal, 50 litres sunflower oil, 7 litres pure ghee, 35 kg sugar, 6 kg tea powder, 10 packets red chilli powder, 5 kg tamarind and 3 kg mustard seeds to Vinayaka Veg Restaurant on 12 October 2026.   [SLP-0099]
+A customer bought 1 litre groundnut oil, 2 kg salt and 2 packets red chilli powder from us, paid ₹590.10/- by UPI, on 12 October 2026.   [SLP-0100]
+---- Demonstration period starts: 13 October 2026 ----
+Green Nest PG Kitchen bought 13 bags Sona Masoori rice, 6 bags wheat atta, 40 kg toor dal, 50 litres sunflower oil, 40 kg sugar, 5 kg tea powder, 15 kg poha, 15 kg Bombay rava, 15 kg detergent powder and 9 packets red chilli powder from us at a discount of 2%, on 14 October 2026.   [SLP-0101]
+Sold 1 kg detergent powder and 1 kg urad dal to a walk-in customer, paid ₹270.90/- by UPI, on 15 October 2026.   [SLP-0102]
+Hanuman Condiments bought 55 kg sugar, 25 kg toor dal, 50 kg salt, 20 kg detergent powder, 25 packets red chilli powder, 25 litres sunflower oil and 10 kg moong dal from us, paid ₹20,338.50/- in cash, on 17 October 2026.   [SLP-0103]
+Sold 5 kg sugar, 1 kg filter coffee powder and 1 kg salt to a walk-in customer, paid ₹1,040.55/- by UPI, on 17 October 2026.   [SLP-0104]
+Sri Guru Raghavendra Darshini bought 10 bags idli rice, 5 bags Sona Masoori rice, 35 kg urad dal, 10 kg chana dal, 40 litres sunflower oil, 50 kg sugar, 25 kg Bombay rava, 25 kg salt, 5 kg mustard seeds, 5 kg tamarind and 8 packets red chilli powder from us at a discount of 2%, on 18 October 2026.   [SLP-0105]
+Sold 135 kg sugar, 10 litres pure ghee, 30 kg Bombay rava, 25 litres groundnut oil and 25 kg jaggery to Kaveri Sweets and Bakery, paid ₹21,887.25/- by UPI, on 18 October 2026.   [SLP-0106]
+Sold 7 bags Sona Masoori rice, 60 litres sunflower oil, 10 litres groundnut oil, 6 litres pure ghee, 45 kg sugar, 7 kg tea powder, 15 packets red chilli powder, 5 packets turmeric powder, 8 kg tamarind, 5 bags wheat atta and 3 kg mustard seeds to Vinayaka Veg Restaurant on 19 October 2026.   [SLP-0107]
+A customer bought 2 litres groundnut oil, 1 kg moong dal and 1 bag wheat atta from us, paid ₹1,025.85/- by UPI, on 19 October 2026.   [SLP-0108]
+Annapoorna Tiffin Centre ko 7 bags idli rice, 3 bags Sona Masoori rice, 35 kg urad dal, 40 litre sunflower oil, 45 kg sugar, 7 kg filter coffee powder, 20 kg Bombay rava, 15 kg salt, 3 kg mustard seeds, 4 kg tamarind aur 4 packets turmeric powder becha on 20 October 2026.   [SLP-0109]
+Sold 1 kg tea powder and 1 kg moong dal to a walk-in customer, paid ₹647.85/- by UPI, on 21 October 2026.   [SLP-0110]
+Sold 1 kg tea powder and 1 kg urad dal to a walk-in customer, paid ₹662.55/- by UPI, on 22 October 2026.   [SLP-0111]
+Sri Guru Raghavendra Darshini bought 8 bags idli rice, 35 kg urad dal, 10 kg chana dal, 40 litres sunflower oil, 55 kg sugar, 7 kg filter coffee powder, 25 kg Bombay rava, 20 kg salt, 4 kg mustard seeds, 7 kg tamarind, 6 packets turmeric powder and 5 kg jaggery from us on 24 October 2026.   [SLP-0112]
+A customer bought 1 kg urad dal, 2 kg Bombay rava and 1 bag wheat atta from us, paid ₹725.55/- in cash, on 24 October 2026.   [SLP-0113]
+Sold 11 bags Sona Masoori rice, 6 bags wheat atta, 35 kg toor dal, 15 kg moong dal, 50 litres sunflower oil, 40 kg sugar, 5 kg tea powder, 15 kg salt, 15 kg poha, 15 kg Bombay rava, 10 kg detergent powder and 9 packets red chilli powder to Green Nest PG Kitchen at a discount of 2%, on 25 October 2026.   [SLP-0114]
+Hanuman Condiments bought 65 kg sugar, 25 kg toor dal, 35 kg salt, 20 kg detergent powder, 15 kg Bombay rava, 15 kg poha, 35 packets red chilli powder, 30 litres sunflower oil, 10 kg moong dal and 15 kg chana dal from us, paid ₹26,066.25/- in cash, on 25 October 2026.   [SLP-0115]
+Vinayaka Veg Restaurant bought 10 bags Sona Masoori rice, 30 kg toor dal, 60 litres sunflower oil, 15 litres groundnut oil, 50 kg sugar, 7 kg tea powder, 15 packets red chilli powder, 8 packets turmeric powder and 4 bags wheat atta from us on 26 October 2026.   [SLP-0116]
+Kaveri Sweets and Bakery bought 85 kg sugar, 10 litres pure ghee, 4 kg cashew kernels, 20 kg Bombay rava and 20 litres groundnut oil from us, paid ₹19,797.75/- by UPI, on 26 October 2026.   [SLP-0117]
+Brindavan Caterers ko 8 bags Sona Masoori rice, 35 kg toor dal, 45 litre sunflower oil, 15 litre groundnut oil, 6 litre pure ghee, 50 kg sugar, 6 kg tea powder, 15 packets red chilli powder, 6 packets turmeric powder, 8 kg tamarind, 9 kg moong dal aur 3 kg mustard seeds becha on 26 October 2026.   [SLP-0118]
+Sold 1 kg filter coffee powder and 3 litres sunflower oil to a walk-in customer, paid ₹1,257.90/- in cash, on 26 October 2026.   [SLP-0119]
+Annapoorna Tiffin Centre ko 6 bags idli rice, 3 bags Sona Masoori rice, 20 kg urad dal, 40 litre sunflower oil, 45 kg sugar, 7 kg filter coffee powder, 3 kg mustard seeds, 7 kg tamarind, 6 packets red chilli powder, 4 packets turmeric powder aur 6 kg jaggery becha on 27 October 2026.   [SLP-0120]
+Sold 1 kg poha, 1 kg filter coffee powder, 1 kg tea powder and 1 kg salt to a walk-in customer, paid ₹1,366.05/- by UPI, on 28 October 2026.   [SLP-0121]
+Sri Chowdeshwari Mess bought 9 bags Sona Masoori rice, 4 bags wheat atta, 30 kg toor dal, 7 kg moong dal, 35 litres sunflower oil, 35 kg sugar, 3 kg tea powder, 15 kg salt, 15 kg poha, 15 kg Bombay rava and 15 kg detergent powder from us on 30 October 2026.   [SLP-0122]
+Sold 1 litre groundnut oil, 1 kg poha, 3 litres sunflower oil and 1 kg tea powder to a walk-in customer, paid ₹1,273.65/- in cash, on 30 October 2026.   [SLP-0123]
+Sri Guru Raghavendra Darshini ko 4 bags Sona Masoori rice, 40 kg urad dal, 40 litre sunflower oil, 45 kg sugar, 10 kg filter coffee powder, 30 kg Bombay rava aur 5 packets turmeric powder becha on 31 October 2026.   [SLP-0124]
+A customer bought 2 kg poha, 1 litre sunflower oil and 2 kg detergent powder from us, paid ₹525/- by UPI, on 1 November 2026.   [SLP-0125]
+Sold 7 bags Sona Masoori rice, 35 kg toor dal, 60 litres sunflower oil, 6 litres pure ghee, 45 kg sugar, 6 kg tea powder, 8 packets turmeric powder and 8 kg tamarind to Vinayaka Veg Restaurant at a discount of 2%, on 2 November 2026.   [SLP-0126]
+Supplied 8 bags Sona Masoori rice, 25 kg toor dal, 45 litres sunflower oil, 15 litres groundnut oil, 5 litres pure ghee, 7 kg tea powder, 15 packets red chilli powder, 6 packets turmeric powder, 8 kg tamarind, 9 kg moong dal, 3 kg mustard seeds and 15 kg salt to Brindavan Caterers on 2 November 2026.   [SLP-0127]
+Green Nest PG Kitchen ko 11 bags Sona Masoori rice, 6 bags wheat atta, 35 kg toor dal, 15 kg moong dal, 45 litre sunflower oil, 5 kg tea powder, 15 kg salt, 15 kg poha, 15 kg detergent powder aur 5 packets turmeric powder becha on 3 November 2026.   [SLP-0128]
+Sold 110 kg sugar, 25 kg Bombay rava and 20 litres groundnut oil to Kaveri Sweets and Bakery, paid ₹10,941/- by UPI, on 3 November 2026.   [SLP-0129]
+Sold 45 kg sugar, 25 kg toor dal, 50 kg salt, 20 kg detergent powder, 15 kg Bombay rava, 15 kg poha, 7 kg tea powder, 35 litres sunflower oil and 9 kg moong dal to Hanuman Condiments, paid ₹22,572.90/- in cash, on 3 November 2026.   [SLP-0130]
+A customer bought 1 bag Sona Masoori rice, 1 kg filter coffee powder and 1 bag wheat atta from us, paid ₹2,871.75/- in cash, on 3 November 2026.   [SLP-0131]
+Sold 6 bags idli rice, 30 kg urad dal, 9 kg chana dal, 40 litres sunflower oil, 8 kg filter coffee powder and 6 kg tamarind to Annapoorna Tiffin Centre on 4 November 2026.   [SLP-0132]
+A customer bought 2 kg urad dal and 2 kg Bombay rava from us, paid ₹411.60/- by UPI, on 5 November 2026.   [SLP-0133]
+Sold 10 bags idli rice, 4 bags Sona Masoori rice, 30 kg urad dal, 9 kg chana dal, 45 litres sunflower oil, 45 kg sugar, 35 kg Bombay rava, 7 kg tamarind, 4 packets turmeric powder and 6 kg jaggery to Sri Guru Raghavendra Darshini on 6 November 2026.   [SLP-0134]
+Sri Chowdeshwari Mess bought 10 bags Sona Masoori rice, 4 bags wheat atta, 30 kg toor dal, 10 kg moong dal, 40 litres sunflower oil, 30 kg sugar, 3 kg tea powder and 15 kg poha from us on 7 November 2026.   [SLP-0135]
+Sold 1 packet red chilli powder, 1 kg tea powder, 2 kg urad dal and 1 bag wheat atta to a walk-in customer, paid ₹1,445.85/- in cash, on 7 November 2026.   [SLP-0136]
+A customer bought 2 packets red chilli powder, 1 kg urad dal and 1 kg filter coffee powder from us, paid ₹1,245.30/- in cash, on 8 November 2026.   [SLP-0137]
+Vinayaka Veg Restaurant ge 10 bags Sona Masoori rice, 30 kg toor dal, 50 litres sunflower oil, 15 litres groundnut oil, 5 litres pure ghee, 45 kg sakkare, 5 kg tea powder, 9 packets turmeric powder, 8 kg tamarind, 9 kg moong dal mattu 15 kg salt maride on 9 November 2026.   [SLP-0138]
+Brindavan Caterers bought 9 bags Sona Masoori rice, 35 kg toor dal, 50 litres sunflower oil, 6 litres pure ghee, 40 kg sugar, 5 kg tea powder and 15 packets red chilli powder from us at a discount of 2%, on 9 November 2026.   [SLP-0139]
+A customer bought 2 kg urad dal and 2 kg detergent powder from us, paid ₹541.80/- by UPI, on 10 November 2026.   [SLP-0140]
+Sold 6 bags idli rice, 3 bags Sona Masoori rice, 10 kg chana dal, 35 litres sunflower oil, 45 kg sugar, 7 kg filter coffee powder, 15 kg Bombay rava, 15 kg salt, 6 kg tamarind, 8 packets red chilli powder and 4 kg jaggery to Annapoorna Tiffin Centre on 11 November 2026.   [SLP-0141]
+Sold 14 bags Sona Masoori rice, 6 bags wheat atta, 40 kg toor dal, 9 kg moong dal, 45 litres sunflower oil, 40 kg sugar, 5 kg tea powder, 15 kg poha, 15 kg Bombay rava, 9 packets red chilli powder and 5 packets turmeric powder to Green Nest PG Kitchen on 11 November 2026.   [SLP-0142]
+Sold 130 kg sugar, 15 litres pure ghee, 4 kg cashew kernels and 20 litres groundnut oil to Kaveri Sweets and Bakery, paid ₹24,276/- by UPI, on 11 November 2026.   [SLP-0143]
+Hanuman Condiments bought 65 kg sugar, 30 kg toor dal, 40 kg salt, 25 kg detergent powder, 15 kg Bombay rava, 15 kg poha and 25 litres sunflower oil from us, paid ₹18,296.25/- in cash, on 11 November 2026.   [SLP-0144]
+
+B3. EXPENSES  (Smart Input, 41 entries, oldest first)
+--------------------------------------------------------------------------------------------
+
+Spent ₹924/- for supplies, carry bags and billing rolls, on 18 July 2026.
+Spent ₹864/- for fuel for the delivery scooter on 24 July 2026.
+Paid salary ₹16,000/- to Ravi Kumar on 31 July 2026.
+Paid salary ₹14,000/- to Suma on 31 July 2026.
+Paid shop rent ₹32,000/- on 1 August 2026.
+Paid Airtel internet bill ₹799/- on 5 August 2026.
+Paid BESCOM electricity bill ₹4,451/- on 6 August 2026.
+Spent ₹1,005/- for fuel for the delivery scooter on 9 August 2026.
+Paid BWSSB water bill ₹553/- for utilities on 10 August 2026.
+Spent ₹1,074/- for supplies, carry bags and billing rolls, on 18 August 2026.
+Spent ₹1,200/- for transport, extra tempo for bulk deliveries, on 23 August 2026.
+Spent ₹937/- for fuel for the delivery scooter on 24 August 2026.
+Paid salary ₹16,000/- to Ravi Kumar on 31 August 2026.
+Paid salary ₹14,000/- to Suma on 31 August 2026.
+Paid shop rent ₹32,000/- on 1 September 2026.
+Spent ₹1,800/- for maintenance, weighing scale calibration, on 4 September 2026.
+Paid Airtel internet bill ₹799/- on 5 September 2026.
+Paid BESCOM electricity bill ₹4,516/- on 6 September 2026.
+Spent ₹1,036/- for fuel for the delivery scooter on 9 September 2026.
+Paid BWSSB water bill ₹600/- for utilities on 10 September 2026.
+Spent ₹1,189/- for supplies, carry bags and billing rolls, on 18 September 2026.
+Paid ₹2,500/- for taxes, BBMP trade licence renewal, on 21 September 2026.
+Spent ₹1,022/- for fuel for the delivery scooter on 24 September 2026.
+Paid salary ₹16,000/- to Ravi Kumar on 30 September 2026.
+Paid salary ₹14,000/- to Suma on 30 September 2026.
+Paid shop rent ₹32,000/- on 1 October 2026.
+Paid Airtel internet bill ₹799/- on 5 October 2026.
+Paid BESCOM electricity bill ₹4,411/- on 6 October 2026.
+Spent ₹932/- for fuel for the delivery scooter on 9 October 2026.
+Paid BWSSB water bill ₹594/- for utilities on 10 October 2026.
+---- Demonstration period starts: 13 October 2026 ----
+Spent ₹1,166/- for supplies, carry bags and billing rolls, on 18 October 2026.
+Spent ₹2,400/- for marketing, rate-card pamphlets for hotels and caterers, on 18 October 2026.
+Spent ₹868/- for fuel for the delivery scooter on 24 October 2026.
+Spent ₹1,450/- for transport, extra tempo for bulk deliveries, on 26 October 2026.
+Paid salary ₹16,000/- to Ravi Kumar on 31 October 2026.
+Paid salary ₹14,000/- to Suma on 31 October 2026.
+Paid shop rent ₹32,000/- on 1 November 2026.
+Paid Airtel internet bill ₹799/- on 5 November 2026.
+Paid BESCOM electricity bill ₹3,923/- on 6 November 2026.
+Spent ₹973/- for fuel for the delivery scooter on 9 November 2026.
+Paid BWSSB water bill ₹633/- for utilities on 10 November 2026.
+
+B4. PAYMENTS RECEIVED FROM CUSTOMERS  (Sales page > open the invoice > Record payment,
+    53 entries). Use the amount, date, mode and reference given.
+--------------------------------------------------------------------------------------------
+
+Received ₹28,700.70 from Annapoorna Tiffin Centre against invoice SLP-0002 dated 16 July 2026, by UPI (transaction ID 237230233376), on 30 July 2026.
+Received ₹27,400.80 from Annapoorna Tiffin Centre against invoice SLP-0010 dated 23 July 2026, by UPI (transaction ID 336886256971), on 4 August 2026.
+Received ₹39,489.45 from Sri Guru Raghavendra Darshini against invoice SLP-0008 dated 22 July 2026, by UPI (transaction ID 588737173916), on 9 August 2026.
+Received ₹36,138.48 from Vinayaka Veg Restaurant against invoice SLP-0003 dated 16 July 2026, by cheque no. 829436, on 10 August 2026.
+Received ₹35,619.15 from Sri Guru Raghavendra Darshini against invoice SLP-0016 dated 29 July 2026, by UPI (transaction ID 290869268924), on 13 August 2026.
+Received ₹20,737.50 from Annapoorna Tiffin Centre against invoice SLP-0019 dated 31 July 2026, by UPI (transaction ID 277939496958), on 14 August 2026.
+Received ₹34,078.80 from Vinayaka Veg Restaurant against invoice SLP-0017 dated 30 July 2026, by cheque no. 694657, on 16 August 2026.
+Received ₹37,382.10 from Vinayaka Veg Restaurant against invoice SLP-0009 dated 22 July 2026, by cheque no. 276054, on 17 August 2026.
+Received ₹33,679.17 from Sri Guru Raghavendra Darshini against invoice SLP-0023 dated 4 August 2026, by UPI (transaction ID 782440111699), on 18 August 2026.
+Received ₹37,236.42 from Green Nest PG Kitchen against invoice SLP-0013 dated 25 July 2026, by bank transfer (UTR SBINN4910744927), on 19 August 2026.
+Received ₹36,487.31 from Sri Guru Raghavendra Darshini against invoice SLP-0030 dated 10 August 2026, by UPI (transaction ID 315394873304), on 22 August 2026.
+Received ₹32,733.75 from Vinayaka Veg Restaurant against invoice SLP-0027 dated 7 August 2026, by cheque no. 918472, on 24 August 2026.
+Received ₹29,260.35 from Annapoorna Tiffin Centre against invoice SLP-0034 dated 15 August 2026, by UPI (transaction ID 733495083906), on 26 August 2026.
+Received ₹32,016.60 from Annapoorna Tiffin Centre against invoice SLP-0026 dated 7 August 2026, by UPI (transaction ID 290438555974), on 27 August 2026.
+Received ₹41,362.65 from Sri Guru Raghavendra Darshini against invoice SLP-0038 dated 18 August 2026, by UPI (transaction ID 449151707265), on 29 August 2026.
+Received ₹33,888.75 from Green Nest PG Kitchen against invoice SLP-0021 dated 3 August 2026, by bank transfer (UTR KKBKN9374944794), on 30 August 2026.
+Received ₹32,435.55 from Vinayaka Veg Restaurant against invoice SLP-0033 dated 14 August 2026, by cheque no. 835546, on 30 August 2026.
+Received ₹19,084.80 from Annapoorna Tiffin Centre against invoice SLP-0041 dated 22 August 2026, by UPI (transaction ID 971159300041), on 5 September 2026.
+Received ₹36,993.60 from Sri Guru Raghavendra Darshini against invoice SLP-0045 dated 25 August 2026, by UPI (transaction ID 956101080568), on 5 September 2026.
+Received ₹41,823.71 from Green Nest PG Kitchen against invoice SLP-0035 dated 15 August 2026, by bank transfer (UTR KKBKN9463505023), on 9 September 2026.
+Received ₹31,300.50 from Vinayaka Veg Restaurant against invoice SLP-0042 dated 22 August 2026, by cheque no. 171840, on 9 September 2026.
+Received ₹33,682.95 from Annapoorna Tiffin Centre against invoice SLP-0049 dated 29 August 2026, by UPI (transaction ID 277892780657), on 9 September 2026.
+Received ₹34,287.75 from Vinayaka Veg Restaurant against invoice SLP-0050 dated 29 August 2026, by cheque no. 394957, on 15 September 2026.
+Received ₹34,145.31 from Annapoorna Tiffin Centre against invoice SLP-0057 dated 5 September 2026, by UPI (transaction ID 853631460098), on 18 September 2026.
+Received ₹41,077.05 from Green Nest PG Kitchen against invoice SLP-0046 dated 25 August 2026, by bank transfer (UTR HDFCN6516409770), on 21 September 2026.
+Received ₹35,181.51 from Sri Guru Raghavendra Darshini against invoice SLP-0054 dated 1 September 2026, by UPI (transaction ID 836386860309), on 21 September 2026.
+Received ₹31,339.35 from Sri Guru Raghavendra Darshini against invoice SLP-0060 dated 7 September 2026, by UPI (transaction ID 170882801948), on 22 September 2026.
+Received ₹45,194.10 from Vinayaka Veg Restaurant against invoice SLP-0059 dated 6 September 2026, by cheque no. 551573, on 23 September 2026.
+Received ₹36,252.30 from Sri Guru Raghavendra Darshini against invoice SLP-0065 dated 13 September 2026, by UPI (transaction ID 521661452530), on 23 September 2026.
+Received ₹35,119.35 from Annapoorna Tiffin Centre against invoice SLP-0074 dated 20 September 2026, by UPI (transaction ID 799094881468), on 2 October 2026.
+Received ₹35,637.36 from Vinayaka Veg Restaurant against invoice SLP-0067 dated 13 September 2026, by cheque no. 365228, on 3 October 2026.
+Received ₹41,248.20 from Sri Guru Raghavendra Darshini against invoice SLP-0073 dated 20 September 2026, by UPI (transaction ID 223218416341), on 5 October 2026.
+Received ₹36,896.85 from Vinayaka Veg Restaurant against invoice SLP-0075 dated 20 September 2026, by cheque no. 804366, on 8 October 2026.
+Received ₹42,315 from Green Nest PG Kitchen against invoice SLP-0055 dated 4 September 2026, by bank transfer (UTR CNRBN3543286939), on 9 October 2026.
+Received ₹44,267.58 from Green Nest PG Kitchen against invoice SLP-0068 dated 14 September 2026, by bank transfer (UTR ICICN1072336995), on 9 October 2026.
+Received ₹33,079.26 from Annapoorna Tiffin Centre against invoice SLP-0082 dated 28 September 2026, by UPI (transaction ID 214565618519), on 11 October 2026.
+---- Demonstration period starts: 13 October 2026 ----
+Received ₹43,394.40 from Sri Guru Raghavendra Darshini against invoice SLP-0081 dated 27 September 2026, by UPI (transaction ID 813491654044), on 14 October 2026.
+Received ₹38,818.50 from Vinayaka Veg Restaurant against invoice SLP-0083 dated 28 September 2026, by cheque no. 577662, on 14 October 2026.
+Received ₹40,513.20 from Sri Guru Raghavendra Darshini against invoice SLP-0089 dated 5 October 2026, by UPI (transaction ID 559146341353), on 15 October 2026.
+Received ₹29,528.10 from Annapoorna Tiffin Centre against invoice SLP-0088 dated 4 October 2026, by UPI (transaction ID 280077716835), on 18 October 2026.
+Received ₹42,850.50 from Green Nest PG Kitchen against invoice SLP-0079 dated 25 September 2026, by bank transfer (UTR SBINN6054617606), on 21 October 2026.
+Received ₹45,429.30 from Sri Guru Raghavendra Darshini against invoice SLP-0097 dated 12 October 2026, by UPI (transaction ID 888982978175), on 27 October 2026.
+Received ₹33,593.76 from Annapoorna Tiffin Centre against invoice SLP-0098 dated 12 October 2026, by UPI (transaction ID 438430313534), on 27 October 2026.
+Received ₹34,836.90 from Vinayaka Veg Restaurant against invoice SLP-0090 dated 5 October 2026, by cheque no. 242858, on 28 October 2026.
+Received ₹40,482.75 from Vinayaka Veg Restaurant against invoice SLP-0099 dated 12 October 2026, by cheque no. 992151, on 28 October 2026.
+Received ₹40,573.47 from Sri Guru Raghavendra Darshini against invoice SLP-0105 dated 18 October 2026, by UPI (transaction ID 568936395600), on 31 October 2026.
+Received ₹41,808.27 from Green Nest PG Kitchen against invoice SLP-0091 dated 5 October 2026, by bank transfer (UTR ICICN4792999456), on 2 November 2026.
+Received ₹36,545.25 from Annapoorna Tiffin Centre against invoice SLP-0109 dated 20 October 2026, by UPI (transaction ID 539880792253), on 2 November 2026.
+Received ₹40,315.80 from Vinayaka Veg Restaurant against invoice SLP-0107 dated 19 October 2026, by cheque no. 296472, on 6 November 2026.
+Received ₹33,430.95 from Annapoorna Tiffin Centre against invoice SLP-0120 dated 27 October 2026, by UPI (transaction ID 966613758208), on 6 November 2026.
+Received ₹36,053.85 from Sri Guru Raghavendra Darshini against invoice SLP-0112 dated 24 October 2026, by UPI (transaction ID 674106712545), on 7 November 2026.
+Received ₹47,766.18 from Green Nest PG Kitchen against invoice SLP-0101 dated 14 October 2026, by bank transfer (UTR UTIBN8340785378), on 11 November 2026.
+Received ₹35,704.20 from Sri Chowdeshwari Mess against invoice SLP-0122 dated 30 October 2026, by UPI (transaction ID 190116669383), on 11 November 2026.
+
+B5. PAYMENTS MADE TO SUPPLIERS  (Purchases page > open the purchase > Record payment,
+    34 entries)
+--------------------------------------------------------------------------------------------
+
+Paid ₹75,003.60 to Kaveri Agencies against purchase PO-0002 dated 15 July 2026, by bank transfer (UTR HDFCN4200928156), on 24 July 2026.
+Paid ₹95,545.80 to Sri Balaji Agro Traders against purchase PO-0001 dated 15 July 2026, by bank transfer (UTR ICICN6495101946), on 31 July 2026.
+Paid ₹79,095.45 to Shree Ganesh Wholesale Agencies against purchase PO-0003 dated 15 July 2026, by bank transfer (UTR ICICN2495277719), on 2 August 2026.
+Paid ₹56,114.10 to Kaveri Agencies against purchase PO-0007 dated 27 July 2026, by bank transfer (UTR SBINN8274724774), on 7 August 2026.
+Paid ₹50,162.70 to Shree Ganesh Wholesale Agencies against purchase PO-0005 dated 25 July 2026, by bank transfer (UTR KKBKN7530204450), on 11 August 2026.
+Paid ₹80,922.45 to Coorg Plantation Traders against purchase PO-0004 dated 15 July 2026, by cheque no. 679692, on 12 August 2026.
+Paid ₹75,873 to Sri Balaji Agro Traders against purchase PO-0006 dated 27 July 2026, by cheque no. 762715, on 15 August 2026.
+Paid ₹51,729.30 to Kaveri Agencies against purchase PO-0011 dated 8 August 2026, by bank transfer (UTR HDFCN6045696856), on 19 August 2026.
+Paid ₹59,632.65 to Shree Ganesh Wholesale Agencies against purchase PO-0008 dated 4 August 2026, by bank transfer (UTR ICICN3584475041), on 24 August 2026.
+Paid ₹86,360.40 to Sri Balaji Agro Traders against purchase PO-0010 dated 8 August 2026, by bank transfer (UTR CNRBN4843067982), on 25 August 2026.
+Paid ₹66,730.65 to Coorg Plantation Traders against purchase PO-0009 dated 4 August 2026, by bank transfer (UTR CNRBN2196644902), on 28 August 2026.
+Paid ₹58,184.70 to Kaveri Agencies against purchase PO-0014 dated 20 August 2026, by bank transfer (UTR SBINN8438532946), on 31 August 2026.
+Paid ₹35,450.63 to Shree Ganesh Wholesale Agencies against purchase PO-0012 dated 14 August 2026, by cheque no. 260971, on 3 September 2026.
+Paid ₹64,083.60 to Sri Balaji Agro Traders against purchase PO-0013 dated 20 August 2026, by bank transfer (UTR UTIBN5165719935), on 8 September 2026.
+Paid ₹71,363.25 to Shree Ganesh Wholesale Agencies against purchase PO-0015 dated 24 August 2026, by cheque no. 871936, on 9 September 2026.
+Paid ₹45,517.50 to Kaveri Agencies against purchase PO-0018 dated 1 September 2026, by bank transfer (UTR KKBKN3772268243), on 11 September 2026.
+Paid ₹62,362.13 to Shree Ganesh Wholesale Agencies against purchase PO-0019 dated 3 September 2026, by bank transfer (UTR HDFCN6557564541), on 19 September 2026.
+Paid ₹57,733.20 to Sri Balaji Agro Traders against purchase PO-0017 dated 1 September 2026, by bank transfer (UTR CNRBN4219054576), on 20 September 2026.
+Paid ₹58,263.45 to Coorg Plantation Traders against purchase PO-0016 dated 24 August 2026, by bank transfer (UTR HDFCN5378081937), on 21 September 2026.
+Paid ₹59,144.40 to Kaveri Agencies against purchase PO-0021 dated 13 September 2026, by bank transfer (UTR KKBKN1173234149), on 23 September 2026.
+Paid ₹62,634.60 to Sri Balaji Agro Traders against purchase PO-0020 dated 13 September 2026, by cheque no. 985289, on 1 October 2026.
+Paid ₹49,360.50 to Shree Ganesh Wholesale Agencies against purchase PO-0022 dated 13 September 2026, by bank transfer (UTR CNRBN7914121709), on 3 October 2026.
+Paid ₹83,874 to Kaveri Agencies against purchase PO-0026 dated 25 September 2026, by bank transfer (UTR ICICN7809427060), on 5 October 2026.
+Paid ₹77,303.10 to Shree Ganesh Wholesale Agencies against purchase PO-0024 dated 23 September 2026, by bank transfer (UTR SBINN1555185565), on 8 October 2026.
+Paid ₹59,371.20 to Coorg Plantation Traders against purchase PO-0023 dated 13 September 2026, by cheque no. 965845, on 9 October 2026.
+Paid ₹80,816.40 to Sri Balaji Agro Traders against purchase PO-0025 dated 25 September 2026, by cheque no. 577010, on 10 October 2026.
+---- Demonstration period starts: 13 October 2026 ----
+Paid ₹55,055.18 to Shree Ganesh Wholesale Agencies against purchase PO-0027 dated 3 October 2026, by bank transfer (UTR SBINN7839041106), on 19 October 2026.
+Paid ₹44,352 to Kaveri Agencies against purchase PO-0030 dated 7 October 2026, by cheque no. 874544, on 20 October 2026.
+Paid ₹1,09,632.60 to Sri Balaji Agro Traders against purchase PO-0029 dated 7 October 2026, by bank transfer (UTR CNRBN9041474686), on 22 October 2026.
+Paid ₹76,223.70 to Kaveri Agencies against purchase PO-0033 dated 19 October 2026, by cheque no. 557379, on 28 October 2026.
+Paid ₹79,779 to Coorg Plantation Traders against purchase PO-0028 dated 3 October 2026, by bank transfer (UTR SBINN8538246107), on 1 November 2026.
+Paid ₹90,821.85 to Shree Ganesh Wholesale Agencies against purchase PO-0031 dated 13 October 2026, by cheque no. 732407, on 2 November 2026.
+Paid ₹89,195.40 to Sri Balaji Agro Traders against purchase PO-0032 dated 19 October 2026, by bank transfer (UTR ICICN8926413588), on 4 November 2026.
+Paid ₹73,350.90 to Shree Ganesh Wholesale Agencies against purchase PO-0034 dated 23 October 2026, by bank transfer (UTR HDFCN3660080910), on 7 November 2026.
+
+B6. CANCELLATIONS, STOCK WRITE-OFFS AND DEADLINES  (do these last)
+--------------------------------------------------------------------------------------------
+
+Cancel invoice SLP-0066 (Annapoorna Tiffin Centre, dated 13 September 2026): the tiffin centre closed for a week for renovation and returned the goods unopened. (Sales page > open the invoice > Cancel. The stock goes back on the shelf.)
+Write off 3 litres of Sunflower Oil 1L Pouch on 8 October 2026: sunflower oil pouches torn in transit. (Products page > Adjust, quantity -3.)
+
+B7. WHAT THE DASHBOARD SHOULD SHOW ON 11 NOVEMBER 2026
+--------------------------------------------------------------------------------------------
+(Scores can move by two or three points with the time of day the dashboard is opened.)
+Sales by 30-day block (incl. 5% GST):
+  15 July 2026 - 13 August 2026                ₹6,14,060
+  14 August 2026 - 12 September 2026           ₹6,92,109
+  13 September 2026 - 12 October 2026          ₹8,13,279
+  13 October 2026 - 11 November 2026 (demo)    ₹10,06,085
+  Last 30 days against the baseline monthly average: +41%
+Net margin, last 90 days: +6.3%  (sales net of GST ₹23,91,879, cost of goods ₹20,20,544, expenses ₹2,21,621)
+Cash flow checks, last 90 days: collected on time 90%, suppliers paid on time 100%, money in ₹22,53,506 vs out ₹21,05,820
+Receivable ₹5,56,208 (overdue ₹0); payable ₹4,74,190 (overdue ₹0)
+Out of stock at the end: none
+At or below low-stock level: Tea Powder 1kg (4)
+
+Business health: 89 (Healthy)
+  Cash flow       86  Healthy
+  Profitability   78  Healthy
+  Revenue        100  Healthy
+  Inventory       99  Healthy
+
+============================================================================================
+END OF DATASET
+============================================================================================

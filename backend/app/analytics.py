@@ -253,6 +253,9 @@ def load_overview(db: Session, business_id: uuid.UUID, days: int = 14) -> dict:
             "payable": payable,
             "inventoryValue": inventory_value,
             "grossProfit": gross_profit,
+            # Gross profit less expenses: the figure that says whether the shop
+            # is making or losing money. Negative means a loss.
+            "netProfit": round2(gross_profit - total_expenses),
             "salesCount": sales_count,
         },
         "revenueSeries": [

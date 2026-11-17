@@ -33,7 +33,11 @@ export function Modal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-4 sm:items-center">
+    // The dialog is never taller than the screen: its header stays put and its
+    // body scrolls. Centring a dialog that is taller than the viewport instead
+    // pushes its top edge off-screen, where no amount of scrolling reaches it,
+    // which is what a sale with more than three line items used to do.
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
       <div
         className="fixed inset-0 bg-black/50 backdrop-blur-[2px] animate-in"
         onClick={onClose}
@@ -44,11 +48,13 @@ export function Modal({
         aria-modal="true"
         aria-label={title}
         className={cn(
-          "relative z-10 my-8 w-full max-w-lg rounded-2xl border border-border bg-card shadow-xl",
+          "relative z-10 flex w-full max-w-lg flex-col rounded-2xl border border-border bg-card shadow-xl",
+          // dvh follows a phone browser's collapsing toolbar; vh is the fallback.
+          "max-h-[calc(100vh-1.5rem)] supports-[height:100dvh]:max-h-[calc(100dvh-1.5rem)]",
           className,
         )}
       >
-        <div className="flex items-start justify-between gap-4 border-b border-border px-5 py-5">
+        <div className="flex shrink-0 items-start justify-between gap-4 border-b border-border px-5 py-4">
           <div>
             <h2 className="text-lg font-bold tracking-[-0.03em]">{title}</h2>
             {description && <p className="mt-0.5 text-sm text-muted-foreground">{description}</p>}
@@ -61,7 +67,9 @@ export function Modal({
             <Icon name="x" size={18} />
           </button>
         </div>
-        <div className="px-5 py-4">{children}</div>
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-4">
+          {children}
+        </div>
       </div>
     </div>
   );

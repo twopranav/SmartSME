@@ -4,7 +4,13 @@ Grouped to mirror `app.models`. These validate what comes in; responses are
 assembled by `app.serializers`.
 """
 
-from .auth import AcceptInviteInput, InviteInput, SignInInput, SignUpInput
+from .auth import (
+    AcceptInviteInput,
+    DeleteAccountInput,
+    InviteInput,
+    SignInInput,
+    SignUpInput,
+)
 from .catalog import ExpenseInput, PartyInput, ProductInput, StockAdjustInput
 from .common import (
     BusinessDate,
@@ -24,6 +30,7 @@ __all__ = [
     "AcceptInviteInput",
     "BusinessDate",
     "DateInput",
+    "DeleteAccountInput",
     "DocumentInput",
     "DocumentTotals",
     "ExpenseInput",

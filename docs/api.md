@@ -13,7 +13,7 @@ Interactive docs at **<http://localhost:8000/docs>**. Summary:
 | Area | Endpoints |
 |---|---|
 | Meta | `GET /api/health` (public) |
-| Auth | `POST /api/auth/sign-in` · `sign-up` · `sign-out` · `GET /api/auth/me` |
+| Auth | `POST /api/auth/sign-in` · `sign-up` · `sign-out` · `GET /api/auth/me` · `GET /api/auth/demo-accounts` (public) · `GET /api/auth/account-deletion` · `POST /api/auth/delete-account` (`password`) |
 | Dashboard | `GET /api/dashboard` |
 | Sales | `GET/POST /api/sales` · `GET /api/sales/{id}` · `POST {id}/payment` (`amount`, `mode`, `reference`, `details`, optional `date`) · `{id}/cancel` · `PATCH {id}/date` · `PATCH {id}/due-date` |
 | Purchases | same shape under `/api/purchases` |
@@ -29,6 +29,19 @@ Interactive docs at **<http://localhost:8000/docs>**. Summary:
 
 Requests use camelCase JSON to match the React code; the database stays
 snake_case. Domain validation errors come back as `400 {"detail": "..."}`.
+
+`GET /api/auth/account-deletion` says what deleting the signed-in account would
+remove (`allowed`, `reason`, `deletesBusiness`, `businessName`, `otherMembers`,
+`records`), and `POST /api/auth/delete-account` does it once the password is
+sent again. A wrong password, a shared demo account and a platform account are
+each a 403. See [Deleting an account](auth.md#deleting-an-account).
+
+`GET /api/auth/demo-accounts` needs no session. It lists the shared demo
+sign-ins that exist on this instance, which is how the sign-in page knows
+whether to offer the two [demo shops](features.md#demo-shops-two-businesses-to-compare).
+
+`GET /api/reports/overview` carries `totals.netProfit` (gross profit less
+expenses, negative for a loss) beside `totals.grossProfit`.
 
 `POST {id}/payment` takes an optional `date` (`yyyy-mm-dd`), the day the money
 moved; left out, it is now. It is refused with a 400 when it is before the

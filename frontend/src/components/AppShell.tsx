@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { cn, initials } from "@/lib/utils";
 import { api, onDataChanged, useApi } from "@/lib/api";
 import { Icon, type IconName } from "./Icon";
+import { DeleteAccountDialog } from "./DeleteAccountDialog";
 import { BrandLockup, BrandMark } from "./Brand";
 import { ThemeToggle } from "./ThemeToggle";
 import { PERMISSIONS, useSession, type Permission } from "@/lib/session";
@@ -67,6 +68,27 @@ export function AppShell({
   children: React.ReactNode;
 }) {
   const { can, isPlatform, me } = useSession();
+  const [accountMenu, setAccountMenu] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const accountRef = useRef<HTMLDivElement>(null);
+  // Close the account menu on a click anywhere else, or Escape. A full-screen
+  // backdrop would not do it: the header blurs what is behind it, and that
+  // makes a fixed child size itself to the header instead of the screen.
+  useEffect(() => {
+    if (!accountMenu) return;
+    const onDown = (e: MouseEvent) => {
+      if (!accountRef.current?.contains(e.target as Node)) setAccountMenu(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setAccountMenu(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [accountMenu]);
   const location = useLocation();
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -333,15 +355,64 @@ export function AppShell({
               )}
             </Link>
             <ThemeToggle />
-            <div className="ml-1 flex items-center gap-2 border-l border-border pl-3">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-xs font-semibold text-accent-foreground">
-                {initials(userName)}
-              </span>
-              <div className="hidden leading-tight sm:block">
-                <div className="text-sm font-medium">{userName}</div>
-                <div className="text-[11px] text-muted-foreground">{userEmail}</div>
-                <div className="text-[11px] font-medium text-link">{me.user.roleLabel}</div>
-              </div>
+            <div
+              ref={accountRef}
+              className="relative ml-1 flex items-center gap-2 border-l border-border pl-3"
+            >
+              {/* The account block is a button: it opens the one thing that is
+                  about the account itself rather than the business. */}
+              <button
+                type="button"
+                onClick={() => setAccountMenu((v) => !v)}
+                aria-haspopup="menu"
+                aria-expanded={accountMenu}
+                aria-label="Account menu"
+                className="flex items-center gap-2 rounded-xl px-1.5 py-1 text-left hover:bg-muted"
+              >
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-xs font-semibold text-accent-foreground">
+                  {initials(userName)}
+                </span>
+                <div className="hidden leading-tight sm:block">
+                  <div className="text-sm font-medium">{userName}</div>
+                  <div className="text-[11px] text-muted-foreground">{userEmail}</div>
+                  <div className="text-[11px] font-medium text-link">{me.user.roleLabel}</div>
+                </div>
+              </button>
+              {accountMenu && (
+                <>
+                  <div
+                    role="menu"
+                    className="absolute right-0 top-full z-50 mt-2 w-56 rounded-xl border border-border bg-popover p-1.5 text-popover-foreground shadow-lg"
+                  >
+                    <div className="border-b border-border px-2.5 pb-2 pt-1 sm:hidden">
+                      <div className="truncate text-sm font-medium">{userName}</div>
+                      <div className="truncate text-[11px] text-muted-foreground">{userEmail}</div>
+                    </div>
+                    <button
+                      type="button"
+                      role="menuitem"
+                      onClick={() => {
+                        setAccountMenu(false);
+                        signOut();
+                      }}
+                      className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-sm hover:bg-muted"
+                    >
+                      <Icon name="logout" size={16} /> Sign out
+                    </button>
+                    <button
+                      type="button"
+                      role="menuitem"
+                      onClick={() => {
+                        setAccountMenu(false);
+                        setDeleteOpen(true);
+                      }}
+                      className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-sm text-destructive hover:bg-destructive/10"
+                    >
+                      <Icon name="trash" size={16} /> Delete account
+                    </button>
+                  </div>
+                </>
+              )}
               <button
                 onClick={signOut}
                 aria-label="Sign out"
@@ -356,6 +427,7 @@ export function AppShell({
         <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6 lg:px-8">
           {children}
         </main>
+        <DeleteAccountDialog open={deleteOpen} onClose={() => setDeleteOpen(false)} />
       </div>
     </div>
   );

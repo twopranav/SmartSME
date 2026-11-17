@@ -29,6 +29,22 @@ from .workflow import default_rules
 DEMO_EMAIL = "demo@smartsme.app"
 DEMO_PASSWORD = "demo1234"
 
+#: The owners of the two comparison shops that `python -m app.cli demo-shops`
+#: loads (see `app/demo_shops.py`). Kept here beside the first demo account so
+#: there is one list of sign-ins the app treats as shared and undeletable.
+DEMO_SHOP_ACCOUNTS: dict[str, dict[str, str]] = {
+    "A": {
+        "email": "shop-a@smartsme.app",
+        "password": DEMO_PASSWORD,
+        "name": "Manjunath (demo owner)",
+    },
+    "B": {
+        "email": "shop-b@smartsme.app",
+        "password": DEMO_PASSWORD,
+        "name": "Lakshmi (demo owner)",
+    },
+}
+
 
 def seed_if_empty(db: Session) -> bool:
     """Seed a realistic demo tenant. Returns True if it actually seeded."""

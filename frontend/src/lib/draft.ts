@@ -149,3 +149,29 @@ export function acceptPayload(
     discountValue: discounted ? reviewed.discountValue : 0,
   };
 }
+
+/**
+ * What a document will be stored as costing: the total over the lines that
+ * will actually be sent. A row with no description or no quantity is dropped
+ * on submit, so it is dropped here too, or "paid in full" would pay for a row
+ * that never reaches the invoice.
+ */
+export function payableTotal(
+  lines: DraftLine[],
+  taxRate: number,
+  discountType: DiscountType = "none",
+  discountValue = 0,
+): number {
+  const sent = lines.filter((line) => line.description.trim() && line.quantity > 0);
+  return documentTotals(sent, taxRate, discountType, discountValue).total;
+}
+
+/**
+ * The amount to record as paid. "Paid in full" follows the total, so adding a
+ * line afterwards does not quietly turn a settled bill into a part payment. A
+ * typed amount is never more than the total: the server would clamp it anyway.
+ */
+export function amountPaidFor(paidInFull: boolean, typed: number, total: number): number {
+  if (paidInFull) return total;
+  return round2(Math.min(Math.max(0, typed || 0), Math.max(0, total)));
+}

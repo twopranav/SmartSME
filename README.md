@@ -68,6 +68,19 @@ Sign in with the seeded demo account:
 | **Email** | `demo@smartsme.app` |
 | **Password** | `demo1234` |
 
+Two more demo businesses can be loaded beside it, to compare with each other:
+a struggling provision store and a healthy one, with four months of sales,
+purchases, expenses and payments each.
+
+```powershell
+cd backend
+.venv\Scripts\python -m app.cli demo-shops           # about a minute; --reset reloads them
+```
+
+They then appear as two buttons on the sign-in page (`shop-a@smartsme.app` and
+`shop-b@smartsme.app`, same password). See
+[Demo shops](docs/features.md#demo-shops-two-businesses-to-compare).
+
 ### API keys are not in the repo
 
 `backend/.env` is gitignored, so **cloning does not give you anyone's API key**.
@@ -207,8 +220,8 @@ Inbox the same way. Full walkthrough:
 window, and set a password. That employee can record sales but will not see
 Workflow or Team, and cannot delete anything.
 
-**7. The tests.** `cd backend; .venv\Scripts\python -m pytest -q` - 569 of
-them, under a minute. Accuracy is measured separately and on purpose:
+**7. The tests.** `cd backend; .venv\Scripts\python -m pytest -q` - 607 of
+them, in a minute or two. Accuracy is measured separately and on purpose:
 [backend/eval](backend/eval/README.md).
 
 **8. Under load** (optional). `python -m loadtest.seed` then the Locust command

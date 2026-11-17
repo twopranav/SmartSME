@@ -14,11 +14,13 @@ import { Icon } from "@/components/Icon";
 import { LineItemsEditor, type EditorProduct, type LineRow } from "@/components/LineItemsEditor";
 import { RecordPaymentButton } from "@/components/RecordPaymentButton";
 import { PaymentModeFields } from "@/components/PaymentModeFields";
+import { AmountPaidField } from "@/components/AmountPaidField";
 import { ConfirmButton } from "@/components/ConfirmButton";
 import { EditDateButton } from "@/components/EditDateButton";
 import { Can, PERMISSIONS } from "@/lib/session";
 import { formatDate, money, paymentReason, toDateInputValue } from "@/lib/utils";
 import { describePayment, emptyPayment, paymentProblem } from "@/lib/payments";
+import { amountPaidFor, payableTotal } from "@/lib/draft";
 
 interface PurchaseRow {
   id: string;
@@ -449,7 +451,10 @@ function NewPurchaseDialog({
   const [items, setItems] = useState<LineRow[]>([]);
   const [discountType, setDiscountType] = useState<"none" | "amount" | "percentage">("none");
   const [discountValue, setDiscountValue] = useState(0);
-  const [amountPaid, setAmountPaid] = useState(0);
+  const [typedPaid, setTypedPaid] = useState(0);
+  const [paidInFull, setPaidInFull] = useState(false);
+  const total = payableTotal(items, data.taxRate, discountType, discountValue);
+  const amountPaid = amountPaidFor(paidInFull, typedPaid, total);
   const [paidHow, setPaidHow] = useState(emptyPayment());
   const paidProblem = amountPaid > 0 ? paymentProblem(paidHow) : null;
   const [notes, setNotes] = useState("");
@@ -533,15 +538,15 @@ function NewPurchaseDialog({
         <Field label="Date" hint="Defaults to today. Back-date it if the bill is older.">
           <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
         </Field>
-        <Field label="Amount paid" hint="Leave 0 for credit (payable).">
-          <Input
-            type="number"
-            min={0}
-            step="0.01"
-            value={amountPaid || ""}
-            onChange={(e) => setAmountPaid(Number(e.target.value) || 0)}
-          />
-        </Field>
+        <AmountPaidField
+          total={total}
+          currency={data.currency}
+          typed={typedPaid}
+          onTyped={setTypedPaid}
+          paidInFull={paidInFull}
+          onPaidInFull={setPaidInFull}
+          hint="Leave it empty for credit (payable)."
+        />
         {amountPaid > 0 && (
           <PaymentModeFields value={paidHow} onChange={setPaidHow} problem={paidProblem} />
         )}

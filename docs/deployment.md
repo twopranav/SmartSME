@@ -66,6 +66,21 @@ Run the same command again after every pull that adds a migration. The API
 does not migrate on start, so a new column the code expects and the database
 lacks shows up as a 500 on the first request that touches it.
 
+The two [demo shops](features.md#demo-shops-two-businesses-to-compare) are
+loaded the same way, by hand, once the new code is deployed:
+
+```bash
+cd backend
+DATABASE_URL="postgresql+psycopg://…<unpooled host>…/neondb?sslmode=require" python -m app.cli demo-shops
+```
+
+It needs no migration and touches no existing business. Against a remote
+database it is slower than locally (every record is several round trips), so
+allow ten to twenty minutes from a laptop. If it is interrupted, run it again
+with `--reset`. Dates are moved so the last entry is the day of loading; run it
+with `--reset` again shortly before a demonstration to have the scores at
+their intended values.
+
 ### 2. Backend: Render, Railway or Fly
 
 Not Vercel: this app runs a background worker thread and holds a database

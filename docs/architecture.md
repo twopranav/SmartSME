@@ -164,9 +164,13 @@ SmartSME/
 │       ├── worker.py           claim / retry / dead-letter loop
 │       ├── analytics.py        dashboard + revenue series
 │       ├── health.py           business-health scores (pure) + the SQL behind them
-│       ├── reports.py          report builder, PDF (reportlab) and CSV
+│       ├── reports.py          report builder, PDF (reportlab) and CSV, with the
+│       │                       profit figure and the items-sold and stock charts
 │       ├── smart_input.py      grounding: party/product matching, drafts
-│       └── seed.py             demo tenant
+│       ├── accounts.py         deleting an account, and its business with it
+│       ├── demo_shops.py       loads the two comparison shops from data/
+│       ├── data/               demo_shops.txt: four months of two shops, as notes
+│       └── seed.py             demo tenant, and the demo sign-ins
 └── frontend/
     ├── vite.config.ts          React plugin, Tailwind plugin, /api proxy
     ├── .prettierrc.json        formatting rules

@@ -39,6 +39,20 @@ Both support **discounts** (flat amount or percentage) applied to the subtotal
 before tax, with a live preview while you type and a hard block when the discount
 exceeds the document value.
 
+**Amount paid** has a **Paid in full** button beside it, on the new sale and new
+purchase forms and on the Smart Input confirmation screen. It is a switch, not a
+one-off fill: while it is on, the amount follows the total, so adding or
+removing a line does not leave an old figure behind. Typing an amount switches
+it off (a part payment), and leaving the field empty keeps the document on
+credit. The total it follows is the one that will be stored: a row with no
+description or no quantity is dropped on submit, so it is not paid for either.
+
+Every dialog is built on one component that never grows taller than the
+screen. Its title bar stays put and its body scrolls, so a sale with a dozen
+line items still shows its Create button, on a laptop and on a phone. (It used
+to be centred as a whole, which pushed a tall dialog's top edge off-screen
+where no scrolling could reach it.)
+
 ### Transaction dates
 Every sale and purchase carries a business `date` separate from `created_at`. It
 defaults to today, can be set at creation, and corrected afterwards from the
@@ -185,12 +199,72 @@ week / month / 3 / 6 months / year) that buckets daily, weekly or monthly as
 appropriate. Top products, top customers, top suppliers, expenses by category,
 cash-flow summary, and **downloadable reports** (see below).
 
+Under the KPI cards a coloured band says whether the shop is **in profit or in
+loss** and by how much: net profit is gross profit (sales net of tax, less what
+the goods sold cost to buy) less expenses. Green for a profit, red for a loss,
+with the words "In profit" or "In loss" so it does not depend on colour alone.
+
 ### Workflow (`/workflow`) and Event bus (`/events`)
 Toggle built-in rules or add your own `WHEN <event> [condition] THEN <action>`
 rule. The event bus page shows events flowing `pending → done`, with retry,
 dead-letter, replay and a manual drain, and polls while open.
 
 ---
+
+## Demo shops: two businesses to compare
+
+The first demo account shows what the app does. Two more show what it is for:
+**Sri Annapoorneshwari Provision Stores** (struggling) and **Sri Lakshmi
+Provision Stores** (healthy), two wholesale-and-retail provision stores in West
+Bengaluru with the same 24 products, the same opening stock, the same rent and
+the same kind of customers, run two different ways for four months.
+
+| | Struggling shop | Healthy shop |
+|---|---|---|
+| Sign in | `shop-a@smartsme.app` / `demo1234` | `shop-b@smartsme.app` / `demo1234` |
+| How it is run | Buys in small lots at higher prices, discounts to hold customers, collects late, pays suppliers late, runs short of fast movers | Buys in bulk on terms, collects inside each customer's terms, pays every bill before its deadline, keeps costs flat |
+| Records | 41 purchases, 115 sales, 69 expenses, 97 payments, 1 cancelled sale, 3 write-offs | 38 purchases, 144 sales, 41 expenses, 87 payments, 1 cancelled sale, 1 write-off |
+| Business health | 24, At risk | 89, Healthy |
+| Last 30 days against its own baseline | 45% down | 41% up |
+| Net margin, last 90 days | -15.2% | +6.3% |
+
+```powershell
+cd backend
+.venv\Scripts\python -m app.cli demo-shops            # load both, about a minute
+.venv\Scripts\python -m app.cli demo-shops --reset    # delete them and load again
+.venv\Scripts\python -m app.cli demo-shops --shop A   # only one
+```
+
+Once loaded, the sign-in page offers a button for each. They are shared demo
+accounts, so they cannot be deleted from inside the app.
+
+The records live in `backend/app/data/demo_shops.txt`, written the way a
+shopkeeper would enter them: a sentence per purchase, sale and expense, in
+English with some Hindi and Kannada in Latin letters, and a line per payment.
+`app/demo_shops.py` loads them the way a person would. Every note goes through
+the same offline parser Smart Input falls back to, is grounded against the
+shop's catalogue, is checked (right kind, right date, party matched, every
+product matched), and is published through the domain layer. Payments,
+cancellations, write-offs and the one deadline change go through the functions
+their buttons call. So stock, balances, alerts and the event log are the app's
+own work, and each record carries the "AI · Text" source badge. No AI key is
+used, whatever is configured.
+
+Three things to know:
+
+- **Dates move.** The dataset runs from 15 July to 11 November 2026, and the
+  health score looks at the last 30 and 90 days from the moment it is viewed.
+  So every date is moved by the same number of days to make the last entry land
+  on the day of loading. Viewed a week later the scores drift down a little for
+  both shops; `--reset` brings them back. `--as-dated` keeps the dates as
+  written.
+- **A line that fails stops the load.** If a note stops producing the draft it
+  was written to produce, the command names the line and removes the
+  half-loaded shop, rather than leaving a shop that looks finished and is not.
+  A test runs all 448 notes through the parser on every run, so this is caught
+  long before a demo.
+- **Alerts are settled.** Four months entered in a minute raise four months of
+  alerts at once; all but the newest five are marked read.
 
 ## Reports
 
@@ -209,6 +283,32 @@ Two deliberate details: cancelled documents are **listed but excluded from
 totals** (the accountant-correct behaviour), and amounts print as plain grouped
 numbers with the currency stated once in the header, because the PDF core fonts
 have no rupee glyph.
+
+A PDF opens with three things before the document lists:
+
+- **Profit or loss for the period**, in a coloured band: "NET PROFIT" in green
+  or "NET LOSS" in red, with the figure and the sum behind it. The summary
+  beside it shows the steps: sales net of tax, cost of goods sold, gross
+  profit, expenses. The consolidated report gives net profit; the sales report
+  has no expenses in it, so it gives gross profit. This is not the "net cash"
+  line, which also counts stock bought and not yet sold.
+- **Items sold**, a pie chart of each product's share of sales in the period
+  with a table beside it (quantity, value, share). Cancelled sales are left
+  out. The five largest products get a slice each and the rest are folded into
+  "Other"; when more than three are folded, every product is listed in a table
+  under the chart, so nothing is hidden.
+- **Stock on hand**, the same for what is on the shelf now, valued at purchase
+  price. It is read from the products themselves, not rebuilt from purchases,
+  so a product added a minute ago and stock entered or corrected by hand (with
+  no purchase from a supplier behind it) are in the chart straight away. A
+  product with no purchase price yet is valued at its selling price, so it
+  still has a slice.
+
+The sales report has the profit band and both charts, the purchases report has
+the stock chart, and the expenses report has neither. The CSV carries the same
+figures as extra tables at the end. Slice colours are a fixed five that stay
+apart for the common kinds of colour blindness, and every slice is named with
+its figures beside the chart.
 
 Invoices print in **light mode regardless of the app theme**: the print handler
 temporarily removes the `.dark` class and the app chrome is hidden with
